@@ -37,7 +37,7 @@ class _WalletScreenState extends State<WalletScreen> {
                         fontSize: 32,
                         fontWeight: FontWeight.w700,
                         letterSpacing: -1,
-                        color: const Color.fromRGBO(47, 47, 51, 1),
+                        color: const Color.fromRGBO(224, 43, 87, 1),
                       ),
                     ),
                     const SizedBox(height: 8),
@@ -67,13 +67,23 @@ class _WalletScreenState extends State<WalletScreen> {
                     ),
                   ),
                 ),
+                Text(
+                  'Valor total de moedas',
+                  style: GoogleFonts.montserrat(
+                    fontSize: 17,
+                    color: const Color.fromRGBO(117, 118, 128, 1),
+                  ),
+                ),
               ],
             ),
           ),
           Wrap(
             children: [
               ListTile(
-                leading: Image.asset(iconEthereum),
+                leading: CircleAvatar(
+                  radius: 10,
+                  child: Image.asset(iconEthereum),
+                ),
                 shape: const Border(
                   top: BorderSide(
                     color: Color.fromRGBO(227, 228, 235, 1),
