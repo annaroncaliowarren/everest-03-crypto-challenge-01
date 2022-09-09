@@ -32,7 +32,7 @@ class _WalletScreenState extends State<WalletScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Carteira',
+                      'Cripto',
                       style: GoogleFonts.montserrat(
                         fontSize: 32,
                         fontWeight: FontWeight.w700,
@@ -58,7 +58,7 @@ class _WalletScreenState extends State<WalletScreen> {
                   visible: isVisible,
                   replacement: const Text('US\$ ******'),
                   child: Text(
-                    'US\$ 1.000,00',
+                    'R\$ 14.798,00',
                     style: GoogleFonts.montserrat(
                       fontSize: 32,
                       fontWeight: FontWeight.w700,
@@ -71,7 +71,6 @@ class _WalletScreenState extends State<WalletScreen> {
             ),
           ),
           Wrap(
-            spacing: 9,
             children: [
               ListTile(
                 leading: Image.asset(iconEthereum),
