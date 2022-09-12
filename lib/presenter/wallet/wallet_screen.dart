@@ -97,10 +97,9 @@ class _BodyWalletScreenState extends State<BodyWalletScreen> {
             ],
           ),
         ),
-        SizedBox(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height * 0.67,
+        Expanded(
           child: ListView(
+            physics: const NeverScrollableScrollPhysics(),
             padding: EdgeInsets.zero,
             children: [
               ListTile(
