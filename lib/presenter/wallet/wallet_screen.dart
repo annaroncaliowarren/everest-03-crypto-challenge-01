@@ -31,10 +31,10 @@ class _BodyWalletScreenState extends State<BodyWalletScreen> {
           margin: const EdgeInsets.only(
             top: 31,
             bottom: 25,
-            right: 15,
-            left: 15,
+            right: 17,
+            left: 16,
           ),
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          //padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -57,6 +57,7 @@ class _BodyWalletScreenState extends State<BodyWalletScreen> {
                         isVisible = !isVisible;
                       });
                     },
+                    padding: EdgeInsets.zero,
                     icon: Icon(
                       isVisible ? Icons.visibility : Icons.visibility_off,
                       size: 22,
@@ -99,6 +100,7 @@ class _BodyWalletScreenState extends State<BodyWalletScreen> {
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height * 0.67,
           child: ListView(
+            padding: EdgeInsets.zero,
             children: [
               ListTile(
                 leading: CircleAvatar(
@@ -113,8 +115,9 @@ class _BodyWalletScreenState extends State<BodyWalletScreen> {
                 ),
                 contentPadding: const EdgeInsets.symmetric(
                   horizontal: 16,
-                  vertical: 14,
+                  vertical: 10,
                 ),
+                horizontalTitleGap: 8,
                 title: Text(
                   'BTC',
                   style: GoogleFonts.sourceSansPro(
@@ -131,9 +134,11 @@ class _BodyWalletScreenState extends State<BodyWalletScreen> {
                 ),
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
                           isVisible ? 'R\$ 6.557,00' : 'R\$ •••••',
@@ -152,6 +157,173 @@ class _BodyWalletScreenState extends State<BodyWalletScreen> {
                           ),
                         ),
                       ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        left: 12,
+                        right: 7,
+                      ),
+                      child: IconButton(
+                        onPressed: () {},
+                        alignment: Alignment.topCenter,
+                        padding: EdgeInsets.zero,
+                        constraints: const BoxConstraints(),
+                        icon: const ImageIcon(
+                          AssetImage(iconChevronRight),
+                          size: 24,
+                          color: Color.fromRGBO(117, 118, 128, 1),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              ListTile(
+                leading: ClipRRect(
+                  borderRadius: BorderRadius.circular(25),
+                  child: Image.asset(iconEthereum),
+                ),
+                shape: const Border(
+                  top: BorderSide(
+                    color: Color.fromRGBO(227, 228, 235, 1),
+                  ),
+                ),
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 10,
+                ),
+                horizontalTitleGap: 8,
+                title: Text(
+                  'ETH',
+                  style: GoogleFonts.sourceSansPro(
+                    fontSize: 19,
+                    color: const Color.fromRGBO(47, 47, 51, 1),
+                  ),
+                ),
+                subtitle: Text(
+                  'Ethereum',
+                  style: GoogleFonts.sourceSansPro(
+                    fontSize: 15,
+                    color: const Color.fromRGBO(117, 118, 128, 1),
+                  ),
+                ),
+                trailing: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          isVisible ? 'R\$ 7.996,00' : 'R\$ •••••',
+                          style: GoogleFonts.nunito(
+                            fontSize: 19,
+                            color: const Color.fromRGBO(47, 47, 51, 1),
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          '0.94 ETH',
+                          style: GoogleFonts.nunito(
+                            fontSize: 15,
+                            color: const Color.fromRGBO(117, 118, 128, 1),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        left: 12,
+                        right: 7,
+                      ),
+                      child: IconButton(
+                        onPressed: () {},
+                        alignment: Alignment.topCenter,
+                        padding: EdgeInsets.zero,
+                        constraints: const BoxConstraints(),
+                        icon: const ImageIcon(
+                          AssetImage(iconChevronRight),
+                          size: 24,
+                          color: Color.fromRGBO(117, 118, 128, 1),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              ListTile(
+                leading: ClipRRect(
+                  borderRadius: BorderRadius.circular(25),
+                  child: Image.asset(iconLitecoin),
+                ),
+                shape: const Border(
+                  top: BorderSide(
+                    color: Color.fromRGBO(227, 228, 235, 1),
+                  ),
+                ),
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 10,
+                ),
+                horizontalTitleGap: 8,
+                title: Text(
+                  'LTC',
+                  style: GoogleFonts.sourceSansPro(
+                    fontSize: 19,
+                    color: const Color.fromRGBO(47, 47, 51, 1),
+                  ),
+                ),
+                subtitle: Text(
+                  'Litecoin',
+                  style: GoogleFonts.sourceSansPro(
+                    fontSize: 15,
+                    color: const Color.fromRGBO(117, 118, 128, 1),
+                  ),
+                ),
+                trailing: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          isVisible ? 'R\$ 245,00' : 'R\$ •••••',
+                          style: GoogleFonts.nunito(
+                            fontSize: 19,
+                            color: const Color.fromRGBO(47, 47, 51, 1),
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          '0.82 LTC',
+                          style: GoogleFonts.nunito(
+                            fontSize: 15,
+                            color: const Color.fromRGBO(117, 118, 128, 1),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        left: 12,
+                        right: 7,
+                      ),
+                      child: IconButton(
+                        onPressed: () {},
+                        alignment: Alignment.topCenter,
+                        padding: EdgeInsets.zero,
+                        constraints: const BoxConstraints(),
+                        icon: const ImageIcon(
+                          AssetImage(iconChevronRight),
+                          size: 24,
+                          color: Color.fromRGBO(117, 118, 128, 1),
+                        ),
+                      ),
                     ),
                   ],
                 ),

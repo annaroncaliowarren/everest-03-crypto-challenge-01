@@ -7,3 +7,5 @@ const iconWarren = 'assets/icons/warren_icon.png';
 
 const iconCryptoOutlined = 'assets/icons/crypto_outlined_icon.png';
 const iconCrypto = 'assets/icons/crypto_icon.png';
+
+const iconChevronRight = 'assets/icons/chevron_right_icon.png';
