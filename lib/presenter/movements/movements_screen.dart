@@ -1,4 +1,6 @@
+import 'package:crypto_list/core/app_assets.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MovementsScreen extends StatelessWidget {
   const MovementsScreen({Key? key}) : super(key: key);
@@ -16,6 +18,25 @@ class BodyMovementsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(
+            imageWorkInProgress,
+            scale: 3,
+          ),
+          const SizedBox(height: 20),
+          Text(
+            'Em breve!',
+            style: GoogleFonts.montserrat(
+              fontWeight: FontWeight.w700,
+              fontSize: 45,
+              color: const Color.fromRGBO(224, 43, 87, 1),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

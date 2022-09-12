@@ -9,3 +9,5 @@ const iconCryptoOutlined = 'assets/icons/crypto_outlined_icon.png';
 const iconCrypto = 'assets/icons/crypto_icon.png';
 
 const iconChevronRight = 'assets/icons/chevron_right_icon.png';
+
+const imageWorkInProgress = 'assets/images/work_in_progress.png';

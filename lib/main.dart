@@ -56,12 +56,14 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
         selectedLabelStyle: GoogleFonts.nunito(
+          fontWeight: FontWeight.w600,
           fontSize: 12,
           height: 1.8,
         ),
         selectedItemColor: const Color.fromRGBO(47, 47, 51, 1),
         unselectedLabelStyle: GoogleFonts.nunito(
           fontSize: 12,
+          fontWeight: FontWeight.w600,
         ),
         unselectedItemColor: const Color.fromRGBO(149, 153, 166, 1),
         currentIndex: _selectedIndex,

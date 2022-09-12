@@ -29,9 +29,9 @@ class _BodyWalletScreenState extends State<BodyWalletScreen> {
       children: [
         Container(
           margin: const EdgeInsets.only(
-            top: 31,
+            top: 30,
             bottom: 25,
-            right: 17,
+            right: 10,
             left: 16,
           ),
           //padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -115,7 +115,7 @@ class _BodyWalletScreenState extends State<BodyWalletScreen> {
                 ),
                 contentPadding: const EdgeInsets.symmetric(
                   horizontal: 16,
-                  vertical: 10,
+                  vertical: 5,
                 ),
                 horizontalTitleGap: 8,
                 title: Text(
@@ -150,7 +150,7 @@ class _BodyWalletScreenState extends State<BodyWalletScreen> {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          '0.65 BTC',
+                          isVisible ? '0.65 BTC' : '•••• BTC',
                           style: GoogleFonts.nunito(
                             fontSize: 15,
                             color: const Color.fromRGBO(117, 118, 128, 1),
@@ -160,8 +160,8 @@ class _BodyWalletScreenState extends State<BodyWalletScreen> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
-                        left: 12,
-                        right: 7,
+                        left: 10,
+                        right: 5,
                       ),
                       child: IconButton(
                         onPressed: () {},
@@ -190,7 +190,7 @@ class _BodyWalletScreenState extends State<BodyWalletScreen> {
                 ),
                 contentPadding: const EdgeInsets.symmetric(
                   horizontal: 16,
-                  vertical: 10,
+                  vertical: 5,
                 ),
                 horizontalTitleGap: 8,
                 title: Text(
@@ -225,7 +225,7 @@ class _BodyWalletScreenState extends State<BodyWalletScreen> {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          '0.94 ETH',
+                          isVisible ? '0.94 ETH' : '•••• ETH',
                           style: GoogleFonts.nunito(
                             fontSize: 15,
                             color: const Color.fromRGBO(117, 118, 128, 1),
@@ -235,8 +235,8 @@ class _BodyWalletScreenState extends State<BodyWalletScreen> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
-                        left: 12,
-                        right: 7,
+                        left: 10,
+                        right: 5,
                       ),
                       child: IconButton(
                         onPressed: () {},
@@ -265,7 +265,7 @@ class _BodyWalletScreenState extends State<BodyWalletScreen> {
                 ),
                 contentPadding: const EdgeInsets.symmetric(
                   horizontal: 16,
-                  vertical: 10,
+                  vertical: 5,
                 ),
                 horizontalTitleGap: 8,
                 title: Text(
@@ -300,7 +300,7 @@ class _BodyWalletScreenState extends State<BodyWalletScreen> {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          '0.82 LTC',
+                          isVisible ? '0.82 LTC' : '•••• LTC',
                           style: GoogleFonts.nunito(
                             fontSize: 15,
                             color: const Color.fromRGBO(117, 118, 128, 1),
@@ -310,8 +310,8 @@ class _BodyWalletScreenState extends State<BodyWalletScreen> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
-                        left: 12,
-                        right: 7,
+                        left: 10,
+                        right: 5,
                       ),
                       child: IconButton(
                         onPressed: () {},
