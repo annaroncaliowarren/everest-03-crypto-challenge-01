@@ -142,7 +142,9 @@ class _BodyWalletScreenState extends State<BodyWalletScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          isVisible ? UtilBrasilFields.obterReal(6577) : 'R\$ •••••',
+                          isVisible
+                              ? UtilBrasilFields.obterReal(6577)
+                              : 'R\$ •••••',
                           style: GoogleFonts.nunito(
                             fontSize: 19,
                             color: const Color.fromRGBO(47, 47, 51, 1),
@@ -169,8 +171,8 @@ class _BodyWalletScreenState extends State<BodyWalletScreen> {
                         alignment: Alignment.topCenter,
                         padding: EdgeInsets.zero,
                         constraints: const BoxConstraints(),
-                        icon: const ImageIcon(
-                          AssetImage(iconChevronRight),
+                        icon: const Icon(
+                          Icons.chevron_right,
                           size: 24,
                           color: Color.fromRGBO(117, 118, 128, 1),
                         ),
@@ -217,7 +219,9 @@ class _BodyWalletScreenState extends State<BodyWalletScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          isVisible ? UtilBrasilFields.obterReal(7996) : 'R\$ •••••',
+                          isVisible
+                              ? UtilBrasilFields.obterReal(7996)
+                              : 'R\$ •••••',
                           style: GoogleFonts.nunito(
                             fontSize: 19,
                             color: const Color.fromRGBO(47, 47, 51, 1),
@@ -244,8 +248,8 @@ class _BodyWalletScreenState extends State<BodyWalletScreen> {
                         alignment: Alignment.topCenter,
                         padding: EdgeInsets.zero,
                         constraints: const BoxConstraints(),
-                        icon: const ImageIcon(
-                          AssetImage(iconChevronRight),
+                        icon: const Icon(
+                          Icons.chevron_right,
                           size: 24,
                           color: Color.fromRGBO(117, 118, 128, 1),
                         ),
@@ -292,7 +296,9 @@ class _BodyWalletScreenState extends State<BodyWalletScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          isVisible ? UtilBrasilFields.obterReal(245) : 'R\$ •••••',
+                          isVisible
+                              ? UtilBrasilFields.obterReal(245)
+                              : 'R\$ •••••',
                           style: GoogleFonts.nunito(
                             fontSize: 19,
                             color: const Color.fromRGBO(47, 47, 51, 1),
@@ -319,8 +325,8 @@ class _BodyWalletScreenState extends State<BodyWalletScreen> {
                         alignment: Alignment.topCenter,
                         padding: EdgeInsets.zero,
                         constraints: const BoxConstraints(),
-                        icon: const ImageIcon(
-                          AssetImage(iconChevronRight),
+                        icon: const Icon(
+                          Icons.chevron_right,
                           size: 24,
                           color: Color.fromRGBO(117, 118, 128, 1),
                         ),
