@@ -1,3 +1,4 @@
+import 'package:brasil_fields/brasil_fields.dart';
 import 'package:crypto_list/core/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -77,7 +78,7 @@ class _BodyWalletScreenState extends State<BodyWalletScreen> {
                   ),
                 ),
                 child: Text(
-                  'R\$ 14.798,00',
+                  UtilBrasilFields.obterReal(14798),
                   style: GoogleFonts.montserrat(
                     fontSize: 32,
                     fontWeight: FontWeight.w700,
@@ -141,7 +142,7 @@ class _BodyWalletScreenState extends State<BodyWalletScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          isVisible ? 'R\$ 6.557,00' : 'R\$ •••••',
+                          isVisible ? UtilBrasilFields.obterReal(6577) : 'R\$ •••••',
                           style: GoogleFonts.nunito(
                             fontSize: 19,
                             color: const Color.fromRGBO(47, 47, 51, 1),
@@ -216,7 +217,7 @@ class _BodyWalletScreenState extends State<BodyWalletScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          isVisible ? 'R\$ 7.996,00' : 'R\$ •••••',
+                          isVisible ? UtilBrasilFields.obterReal(7996) : 'R\$ •••••',
                           style: GoogleFonts.nunito(
                             fontSize: 19,
                             color: const Color.fromRGBO(47, 47, 51, 1),
@@ -291,7 +292,7 @@ class _BodyWalletScreenState extends State<BodyWalletScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          isVisible ? 'R\$ 245,00' : 'R\$ •••••',
+                          isVisible ? UtilBrasilFields.obterReal(245) : 'R\$ •••••',
                           style: GoogleFonts.nunito(
                             fontSize: 19,
                             color: const Color.fromRGBO(47, 47, 51, 1),
