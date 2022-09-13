@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../controller/crypto_controller.dart';
 import '../model/crypto_model.dart';
 import '../provider/wallet_providers.dart';
 
@@ -12,7 +13,7 @@ class TotalCurrencyCustomer extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     bool isVisible = ref.watch(isVisibleProvider.state).state;
-    final cryptos = ref.watch(cryptoNotifier);
+    final cryptos = ref.watch(cryptoController);
     double totalCurrency = 0;
 
     double getTotalCurrency() {

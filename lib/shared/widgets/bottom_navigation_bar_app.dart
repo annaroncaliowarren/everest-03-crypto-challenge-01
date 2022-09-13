@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../screens/movements/widgets/body_movements_screen.dart';
+import '../../screens/wallet/widgets/body_wallet_screen.dart';
 import '../utils/app_assets.dart';
-import '../../presenter/movements/widgets/body_movements_screen.dart';
-import '../../presenter/wallet/widgets/body_wallet_screen.dart';
 
 class BottomNavigationBarApp extends StatefulWidget {
   const BottomNavigationBarApp({Key? key}) : super(key: key);
+
+  static const route = '/initial-screen';
 
   @override
   State<BottomNavigationBarApp> createState() => _BottomNavigationBarAppState();
