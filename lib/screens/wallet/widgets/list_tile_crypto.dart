@@ -16,7 +16,7 @@ class ListTileCrypto extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    bool isVisible = ref.watch(isVisibleProvider.state).state;
+    bool isVisible = ref.watch(isVisibleProvider);
 
     return ListTile(
       leading: ClipRRect(
@@ -81,7 +81,7 @@ class ListTileCrypto extends HookConsumerWidget {
           Padding(
             padding: const EdgeInsets.only(
               left: 10,
-              right: 5,
+              right: 3,
             ),
             child: IconButton(
               onPressed: () {},

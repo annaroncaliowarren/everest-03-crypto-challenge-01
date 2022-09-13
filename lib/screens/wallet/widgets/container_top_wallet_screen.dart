@@ -13,7 +13,7 @@ class ContainerTopWalletScreen extends StatelessWidget {
       margin: const EdgeInsets.only(
         top: 30,
         bottom: 25,
-        right: 10,
+        right: 18,
         left: 16,
       ),
       child: Column(

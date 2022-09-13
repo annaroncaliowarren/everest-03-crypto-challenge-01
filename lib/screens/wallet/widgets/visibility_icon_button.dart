@@ -15,6 +15,7 @@ class VisibilityIconButton extends HookConsumerWidget {
         ref.read(isVisibleProvider.state).state = !isVisible;
       },
       padding: EdgeInsets.zero,
+      constraints: const BoxConstraints(),
       icon: Icon(
         isVisible ? Icons.visibility : Icons.visibility_off,
         size: 22,

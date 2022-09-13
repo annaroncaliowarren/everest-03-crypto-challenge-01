@@ -12,7 +12,7 @@ class TotalCurrencyCustomer extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    bool isVisible = ref.watch(isVisibleProvider.state).state;
+    bool isVisible = ref.watch(isVisibleProvider);
     final cryptos = ref.watch(cryptoController);
     double totalCurrency = 0;
 
