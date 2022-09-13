@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../core/app_assets.dart';
+import '../../../shared/utils/app_assets.dart';
 
 class BodyMovementsScreen extends StatelessWidget {
   const BodyMovementsScreen({Key? key}) : super(key: key);

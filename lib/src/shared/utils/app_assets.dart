@@ -1,6 +1,6 @@
 class AppAssets {
   final iconLitecoin = 'assets/icons/litecoin_icon.png';
-  final iconBitcoin = 'assets/icons/bitcoin_vector.png';
+  final iconBitcoin = 'assets/icons/bitcoin_icon.png';
   final iconEthereum = 'assets/icons/ethereum_icon.png';
 
   final iconWarrenOutlined = 'assets/icons/warren_outlined_icon.png';

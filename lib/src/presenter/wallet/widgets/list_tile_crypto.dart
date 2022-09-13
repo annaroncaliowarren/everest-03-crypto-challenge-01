@@ -1,31 +1,26 @@
 import 'package:brasil_fields/brasil_fields.dart';
-import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../core/app_assets.dart';
 import '../model/crypto_model.dart';
 import '../provider/wallet_providers.dart';
 
 class ListTileCrypto extends HookConsumerWidget {
-  const ListTileCrypto({Key? key}) : super(key: key);
+  final CryptoModel cryptoModel;
+
+  const ListTileCrypto({
+    Key? key,
+    required this.cryptoModel,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     bool isVisible = ref.watch(isVisibleProvider.state).state;
-    CryptoModel cryptoModel = CryptoModel(
-      shortName: 'BTC',
-      fullName: 'Bitcoin',
-      cryptoIcon: AppAssets().iconBitcoin,
-      currencyCustomerValue: Decimal.parse('6577'),
-      amountCurrency: 0.65,
-    );
 
     return ListTile(
-      leading: CircleAvatar(
-        radius: 25,
-        backgroundColor: const Color.fromRGBO(247, 147, 26, 1),
+      leading: ClipRRect(
+        borderRadius: BorderRadius.circular(25),
         child: Image.asset(cryptoModel.cryptoIcon),
       ),
       shape: const Border(
@@ -73,7 +68,9 @@ class ListTileCrypto extends HookConsumerWidget {
               ),
               const SizedBox(height: 4),
               Text(
-                isVisible ? cryptoModel.amountCurrency.toString() : '•••• BTC',
+                isVisible
+                    ? '${cryptoModel.amountCurrency.toString()} ${cryptoModel.shortName}'
+                    : '•••• ${cryptoModel.shortName}',
                 style: GoogleFonts.nunito(
                   fontSize: 15,
                   color: const Color.fromRGBO(117, 118, 128, 1),
