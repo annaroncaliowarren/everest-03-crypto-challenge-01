@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../core/app_assets.dart';
-import '../../presenter/movements/movements_screen.dart';
-import '../../presenter/wallet/wallet_screen.dart';
+import '../../presenter/movements/widgets/body_movements_screen.dart';
+import '../../presenter/wallet/widgets/body_wallet_screen.dart';
 
 class BottomNavigationBarApp extends StatefulWidget {
   const BottomNavigationBarApp({Key? key}) : super(key: key);
