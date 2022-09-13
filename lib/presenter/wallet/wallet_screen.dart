@@ -1,5 +1,5 @@
 import 'package:brasil_fields/brasil_fields.dart';
-import 'package:crypto_list/core/app_assets.dart';
+import '../../core/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -35,7 +35,6 @@ class _BodyWalletScreenState extends State<BodyWalletScreen> {
             right: 10,
             left: 16,
           ),
-          //padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -106,7 +105,7 @@ class _BodyWalletScreenState extends State<BodyWalletScreen> {
                 leading: CircleAvatar(
                   radius: 25,
                   backgroundColor: const Color.fromRGBO(247, 147, 26, 1),
-                  child: Image.asset(iconBitcoin),
+                  child: Image.asset(AppAssets().iconBitcoin),
                 ),
                 shape: const Border(
                   top: BorderSide(
@@ -183,7 +182,7 @@ class _BodyWalletScreenState extends State<BodyWalletScreen> {
               ListTile(
                 leading: ClipRRect(
                   borderRadius: BorderRadius.circular(25),
-                  child: Image.asset(iconEthereum),
+                  child: Image.asset(AppAssets().iconEthereum),
                 ),
                 shape: const Border(
                   top: BorderSide(
@@ -260,7 +259,7 @@ class _BodyWalletScreenState extends State<BodyWalletScreen> {
               ListTile(
                 leading: ClipRRect(
                   borderRadius: BorderRadius.circular(25),
-                  child: Image.asset(iconLitecoin),
+                  child: Image.asset(AppAssets().iconLitecoin),
                 ),
                 shape: const Border(
                   top: BorderSide(

@@ -1,4 +1,4 @@
-import 'package:crypto_list/core/app_assets.dart';
+import '../../core/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -23,7 +23,7 @@ class BodyMovementsScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(
-            imageWorkInProgress,
+            AppAssets().imageWorkInProgress,
             scale: 3,
           ),
           const SizedBox(height: 20),
