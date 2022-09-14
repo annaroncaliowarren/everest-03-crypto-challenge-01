@@ -1,4 +1,5 @@
 import 'package:brasil_fields/brasil_fields.dart';
+import '../../../shared/utils/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -31,7 +32,7 @@ class TotalCurrencyCustomer extends HookConsumerWidget {
           fontSize: 32,
           fontWeight: FontWeight.w700,
           letterSpacing: -1,
-          color: const Color.fromRGBO(47, 47, 51, 1),
+          color: AppAssets().colorBlack,
         ),
       ),
       child: Text(
@@ -40,7 +41,7 @@ class TotalCurrencyCustomer extends HookConsumerWidget {
           fontSize: 32,
           fontWeight: FontWeight.w700,
           letterSpacing: -1,
-          color: const Color.fromRGBO(47, 47, 51, 1),
+          color: AppAssets().colorBlack,
         ),
       ),
     );

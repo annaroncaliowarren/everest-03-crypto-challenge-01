@@ -22,7 +22,7 @@ class BodyMovementsScreen extends StatelessWidget {
             style: GoogleFonts.montserrat(
               fontWeight: FontWeight.w700,
               fontSize: 45,
-              color: const Color.fromRGBO(224, 43, 87, 1),
+              color: AppAssets().colorPink,
             ),
           ),
         ],

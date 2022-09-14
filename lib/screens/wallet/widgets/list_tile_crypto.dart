@@ -1,4 +1,5 @@
 import 'package:brasil_fields/brasil_fields.dart';
+import '../../../shared/utils/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -37,14 +38,14 @@ class ListTileCrypto extends HookConsumerWidget {
         cryptoModel.shortName,
         style: GoogleFonts.sourceSansPro(
           fontSize: 19,
-          color: const Color.fromRGBO(47, 47, 51, 1),
+          color: AppAssets().colorBlack,
         ),
       ),
       subtitle: Text(
         cryptoModel.fullName,
         style: GoogleFonts.sourceSansPro(
           fontSize: 15,
-          color: const Color.fromRGBO(117, 118, 128, 1),
+          color: AppAssets().colorGrey,
         ),
       ),
       trailing: Row(
@@ -62,7 +63,7 @@ class ListTileCrypto extends HookConsumerWidget {
                     : 'R\$ •••••',
                 style: GoogleFonts.nunito(
                   fontSize: 19,
-                  color: const Color.fromRGBO(47, 47, 51, 1),
+                  color: AppAssets().colorBlack,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -73,7 +74,7 @@ class ListTileCrypto extends HookConsumerWidget {
                     : '•••• ${cryptoModel.shortName}',
                 style: GoogleFonts.nunito(
                   fontSize: 15,
-                  color: const Color.fromRGBO(117, 118, 128, 1),
+                  color: AppAssets().colorGrey,
                 ),
               ),
             ],
@@ -88,10 +89,10 @@ class ListTileCrypto extends HookConsumerWidget {
               alignment: Alignment.topCenter,
               padding: EdgeInsets.zero,
               constraints: const BoxConstraints(),
-              icon: const Icon(
+              icon: Icon(
                 Icons.chevron_right,
                 size: 24,
-                color: Color.fromRGBO(117, 118, 128, 1),
+                color: AppAssets().colorGrey,
               ),
             ),
           ),

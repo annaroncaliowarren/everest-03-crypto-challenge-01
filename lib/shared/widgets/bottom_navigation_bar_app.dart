@@ -52,7 +52,7 @@ class _BottomNavigationBarAppState extends State<BottomNavigationBarApp> {
           fontSize: 12,
           height: 1.8,
         ),
-        selectedItemColor: const Color.fromRGBO(47, 47, 51, 1),
+        selectedItemColor: AppAssets().colorBlack,
         unselectedLabelStyle: GoogleFonts.nunito(
           fontSize: 12,
           fontWeight: FontWeight.w600,

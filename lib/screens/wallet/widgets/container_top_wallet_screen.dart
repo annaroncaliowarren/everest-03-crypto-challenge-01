@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../shared/utils/app_assets.dart';
 import 'total_customer_currency.dart';
 import 'visibility_icon_button.dart';
 
@@ -28,7 +29,7 @@ class ContainerTopWalletScreen extends StatelessWidget {
                   fontSize: 32,
                   fontWeight: FontWeight.w700,
                   letterSpacing: -1,
-                  color: const Color.fromRGBO(224, 43, 87, 1),
+                  color: AppAssets().colorPink,
                 ),
               ),
               const SizedBox(height: 8),
@@ -40,7 +41,7 @@ class ContainerTopWalletScreen extends StatelessWidget {
             'Valor total de moedas',
             style: GoogleFonts.nunito(
               fontSize: 17,
-              color: const Color.fromRGBO(117, 118, 128, 1),
+              color:  AppAssets().colorGrey,
             ),
           ),
         ],
