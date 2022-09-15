@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 
 import 'package:decimal/decimal.dart';
@@ -19,28 +18,29 @@ class CryptoModel {
   });
 
   Map<String, dynamic> toMap() {
-    final result = <String, dynamic>{};
-  
-    result.addAll({'shortName': shortName});
-    result.addAll({'fullName': fullName});
-    result.addAll({'cryptoIcon': cryptoIcon});
-    result.addAll({'currencyCustomerValue': currencyCustomerValue});
-    result.addAll({'amountCurrency': amountCurrency});
-  
+    final result = <String, dynamic>{
+      'shortName': shortName,
+      'fullName': fullName,
+      'cryptoIcon': cryptoIcon,
+      'currencyCustomerValue': currencyCustomerValue,
+      'amountCurrency': amountCurrency,
+    };
+    
     return result;
   }
 
-  factory CryptoModel.fromMap(Map<String, dynamic> map) {
+  factory CryptoModel.fromMap(Map<String, dynamic> coin) {
     return CryptoModel(
-      shortName: map['shortName'] ?? '',
-      fullName: map['fullName'] ?? '',
-      cryptoIcon: map['cryptoIcon'] ?? '',
-      currencyCustomerValue: Decimal.parse(map['currencyCustomerValue']),
-      amountCurrency: map['amountCurrency']?.toDouble() ?? 0.0,
+      shortName: coin['shortName'] ?? '',
+      fullName: coin['fullName'] ?? '',
+      cryptoIcon: coin['cryptoIcon'] ?? '',
+      currencyCustomerValue: Decimal.parse(coin['currencyCustomerValue']),
+      amountCurrency: coin['amountCurrency']?.toDouble() ?? 0.0,
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory CryptoModel.fromJson(String source) => CryptoModel.fromMap(json.decode(source));
+  factory CryptoModel.fromJson(String source) =>
+      CryptoModel.fromMap(json.decode(source));
 }
