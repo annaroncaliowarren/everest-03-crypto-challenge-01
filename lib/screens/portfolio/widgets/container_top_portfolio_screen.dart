@@ -12,7 +12,7 @@ class ContainerTopPortfolioScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(
-        top: 35,
+        top: 24,
         bottom: 25,
         right: 18,
         left: 16,
