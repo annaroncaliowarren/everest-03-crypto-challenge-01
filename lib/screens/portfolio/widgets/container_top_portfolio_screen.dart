@@ -5,14 +5,14 @@ import '../../../shared/utils/app_assets.dart';
 import 'total_customer_currency.dart';
 import 'visibility_icon_button.dart';
 
-class ContainerTopWalletScreen extends StatelessWidget {
-  const ContainerTopWalletScreen({Key? key}) : super(key: key);
+class ContainerTopPortfolioScreen extends StatelessWidget {
+  const ContainerTopPortfolioScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(
-        top: 30,
+        top: 35,
         bottom: 25,
         right: 18,
         left: 16,
@@ -32,16 +32,16 @@ class ContainerTopWalletScreen extends StatelessWidget {
                   color: AppAssets().colorPink,
                 ),
               ),
-              const SizedBox(height: 8),
               const VisibilityIconButton(),
             ],
           ),
+          const SizedBox(height: 8),
           const TotalCurrencyCustomer(),
           Text(
             'Valor total de moedas',
             style: GoogleFonts.nunito(
               fontSize: 17,
-              color:  AppAssets().colorGrey,
+              color: AppAssets().colorGrey,
             ),
           ),
         ],
@@ -49,4 +49,3 @@ class ContainerTopWalletScreen extends StatelessWidget {
     );
   }
 }
-

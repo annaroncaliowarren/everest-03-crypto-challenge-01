@@ -1,4 +1,4 @@
-import 'screens/wallet/view/wallet_screen.dart';
+import 'screens/portfolio/view/portfolio_screen.dart';
 import 'shared/utils/app_routes.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +16,7 @@ class AppWidget extends StatelessWidget {
       initialRoute: BottomNavigationBarApp.route,
       onUnknownRoute: (context) {
         return MaterialPageRoute(
-          builder: (context) => const WalletScreen(),
+          builder: (context) => const PortfolioScreen(),
         );
       },
     );

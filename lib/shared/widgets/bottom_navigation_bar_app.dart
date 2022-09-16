@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../screens/movements/widgets/body_movements_screen.dart';
-import '../../screens/wallet/widgets/body_wallet_screen.dart';
+import '../../screens/transactions/widgets/body_transactions_screen.dart';
+import '../../screens/portfolio/widgets/body_portfolio_screen.dart';
 import '../utils/app_assets.dart';
 
 class BottomNavigationBarApp extends StatefulWidget {
@@ -18,8 +18,8 @@ class _BottomNavigationBarAppState extends State<BottomNavigationBarApp> {
   int _selectedIndex = 0;
 
   final List<Widget> _widgetOptions = <Widget>[
-    const BodyWalletScreen(),
-    const BodyMovementsScreen(),
+    const BodyPortfolioScreen(),
+    const BodyTransactionsScreen(),
   ];
 
   void _onItemTapped(int index) {
