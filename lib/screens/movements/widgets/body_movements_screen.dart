@@ -1,17 +1,7 @@
-import '../../core/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class MovementsScreen extends StatelessWidget {
-  const MovementsScreen({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: BodyMovementsScreen(),
-    );
-  }
-}
+import '../../../shared/utils/app_assets.dart';
 
 class BodyMovementsScreen extends StatelessWidget {
   const BodyMovementsScreen({Key? key}) : super(key: key);
@@ -32,7 +22,7 @@ class BodyMovementsScreen extends StatelessWidget {
             style: GoogleFonts.montserrat(
               fontWeight: FontWeight.w700,
               fontSize: 45,
-              color: const Color.fromRGBO(224, 43, 87, 1),
+              color: AppAssets().colorPink,
             ),
           ),
         ],

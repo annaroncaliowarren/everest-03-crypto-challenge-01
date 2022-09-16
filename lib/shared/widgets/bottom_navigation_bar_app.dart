@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../core/app_assets.dart';
-import '../../presenter/movements/movements_screen.dart';
-import '../../presenter/wallet/wallet_screen.dart';
+import '../../screens/movements/widgets/body_movements_screen.dart';
+import '../../screens/wallet/widgets/body_wallet_screen.dart';
+import '../utils/app_assets.dart';
 
 class BottomNavigationBarApp extends StatefulWidget {
   const BottomNavigationBarApp({Key? key}) : super(key: key);
+
+  static const route = '/initial-screen';
 
   @override
   State<BottomNavigationBarApp> createState() => _BottomNavigationBarAppState();
@@ -50,7 +52,7 @@ class _BottomNavigationBarAppState extends State<BottomNavigationBarApp> {
           fontSize: 12,
           height: 1.8,
         ),
-        selectedItemColor: const Color.fromRGBO(47, 47, 51, 1),
+        selectedItemColor: AppAssets().colorBlack,
         unselectedLabelStyle: GoogleFonts.nunito(
           fontSize: 12,
           fontWeight: FontWeight.w600,
