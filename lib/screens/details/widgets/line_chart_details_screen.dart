@@ -56,7 +56,7 @@ class _LineChartDetailsScreen extends ConsumerState<LineChartDetailsScreen> {
           lineTouchData: LineTouchData(
             touchCallback: (FlTouchEvent event, LineTouchResponse? lineTouch) {
               Decimal? selectedPrice;
-
+    
               if (event.isInterestedForInteractions ||
                   lineTouch == null ||
                   lineTouch.lineBarSpots == null) {
@@ -144,7 +144,7 @@ class _LineChartDetailsScreen extends ConsumerState<LineChartDetailsScreen> {
                       setState(() {
                         selectedIndex = index;
                       });
-
+    
                       daysSpotsList = spotsList.sublist(90 - days[index]);
                     },
                     style: TextButton.styleFrom(

@@ -1,7 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'shared/utils/app_routes.dart';
-import 'package:flutter/material.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);

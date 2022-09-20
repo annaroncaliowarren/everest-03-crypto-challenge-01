@@ -6,7 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../shared/utils/app_assets.dart';
 import '../controller/crypto_controller.dart';
 import '../model/crypto_model.dart';
-import '../provider/wallet_providers.dart';
+import '../provider/portfolio_providers.dart';
 
 class TotalCurrencyCustomer extends HookConsumerWidget {
   const TotalCurrencyCustomer({Key? key}) : super(key: key);

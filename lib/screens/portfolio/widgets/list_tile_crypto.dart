@@ -11,9 +11,9 @@ import '../../details/model/coin_model.dart';
 import '../../details/provider/details_provider.dart';
 import '../../details/view/details_screen.dart';
 import '../model/crypto_model.dart';
-import '../provider/wallet_providers.dart';
+import '../provider/portfolio_providers.dart';
 
-class ListTileCrypto extends HookConsumerWidget {
+class ListTileCrypto extends ConsumerWidget {
   final CryptoModel cryptoModel;
 
   const ListTileCrypto({
@@ -27,25 +27,34 @@ class ListTileCrypto extends HookConsumerWidget {
     final coins = ref.watch(coinController);
     final valueVariation = ref.watch(valueVariationProvider.state);
 
-    for (CoinModel coin in coins) {
-      if (coin.base == cryptoModel.shortName) {
-        cryptoModel.amountCurrency =
-            (cryptoModel.currencyCustomerValue.toDouble() /
-                double.parse(coin.prices.latest));
+    double getAmountCurrency() {
+      for (CoinModel coin in coins) {
+        if (coin.base == cryptoModel.shortName) {
+          cryptoModel.amountCurrency =
+              (cryptoModel.currencyCustomerValue.toDouble() /
+                  double.parse(coin.prices.latest));
+        }
       }
+      return cryptoModel.amountCurrency;
+    }
+
+    Decimal getCurrentPrice() {
+      for (CoinModel coin in coins) {
+        if (coin.base == cryptoModel.shortName) {
+          cryptoModel.currentPrice = Decimal.parse(coin.prices.latest);
+          ref.read(priceProvider.state).state =
+              Decimal.parse(coin.prices.latest);
+          valueVariation.state = 0;
+        }
+      }
+      return cryptoModel.currentPrice;
     }
 
     return ListTile(
       onTap: () {
-        ref.read(spotsController.notifier).generateSpotsList(coins, cryptoModel);
-        
-        for (CoinModel coin in coins) {
-          if (coin.base == cryptoModel.shortName) {
-            ref.read(priceProvider.state).state =
-                Decimal.parse(coin.prices.latest);
-            valueVariation.state = 0;
-          }
-        }
+        getCurrentPrice();
+
+        ref.read(spotsController.notifier).generateSpotsList(cryptoModel);
 
         Navigator.pushNamed(
           context,
@@ -103,7 +112,7 @@ class ListTileCrypto extends HookConsumerWidget {
               const SizedBox(height: 4),
               Text(
                 isVisible
-                    ? '${cryptoModel.amountCurrency.toStringAsFixed(2)} ${cryptoModel.shortName}'
+                    ? '${getAmountCurrency().toStringAsFixed(2)} ${cryptoModel.shortName}'
                     : '•••• ${cryptoModel.shortName}',
                 style: TextStyle(
                   fontSize: 15,
