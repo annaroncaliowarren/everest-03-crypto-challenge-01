@@ -2,11 +2,19 @@ import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../portfolio/model/crypto_model.dart';
 import '../provider/details_provider.dart';
 import '../widgets/line_chart_details_screen.dart';
 
 class DetailsScreen extends ConsumerWidget {
-  const DetailsScreen({Key? key}) : super(key: key);
+  final CryptoModel cryptoModel;
+
+  const DetailsScreen({
+    Key? key,
+    required this.cryptoModel,
+  }) : super(key: key);
+
+  static const route = '/portfolio/details';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -24,7 +32,9 @@ class DetailsScreen extends ConsumerWidget {
         backgroundColor: Colors.white,
         elevation: 1,
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
           icon: const Icon(
             Icons.arrow_back,
             color: Colors.black,

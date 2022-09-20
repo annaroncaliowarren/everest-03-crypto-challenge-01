@@ -1,4 +1,5 @@
 import 'package:brasil_fields/brasil_fields.dart';
+import 'package:crypto_list/screens/details/view/details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -20,6 +21,13 @@ class ListTileCrypto extends HookConsumerWidget {
     bool isVisible = ref.watch(isVisibleProvider);
 
     return ListTile(
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          DetailsScreen.route,
+          arguments: cryptoModel,
+        );
+      },
       leading: ClipRRect(
         borderRadius: BorderRadius.circular(25),
         child: Image.asset(cryptoModel.cryptoIcon),
