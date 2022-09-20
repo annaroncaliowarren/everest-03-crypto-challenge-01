@@ -6,7 +6,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../shared/utils/app_assets.dart';
 import '../../portfolio/model/crypto_model.dart';
-import '../controller/coin_controller.dart';
+import '../controllers/coin_controller.dart';
+import '../controllers/spots_controller.dart';
 import '../model/coin_model.dart';
 import '../provider/details_provider.dart';
 

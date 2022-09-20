@@ -1,12 +1,15 @@
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../shared/utils/app_assets.dart';
 import '../../portfolio/model/crypto_model.dart';
 import '../provider/details_provider.dart';
+import 'button_convert_currency.dart';
 import 'line_chart_details_screen.dart';
+import 'list_tile_details_crypto.dart';
+import 'text_current_price.dart';
+import 'top_row_info_crypto.dart';
 
 class BodyDetailsScreen extends ConsumerWidget {
   final CryptoModel cryptoModel;
@@ -26,50 +29,10 @@ class BodyDetailsScreen extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 25,
-              bottom: 16,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      cryptoModel.fullName,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 34,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      cryptoModel.shortName,
-                      style: TextStyle(
-                        fontSize: 17,
-                        color: AppAssets().colorGrey,
-                      ),
-                    ),
-                  ],
-                ),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(25),
-                  child: Image.asset(cryptoModel.cryptoIcon),
-                ),
-              ],
-            ),
+          TopRowInfoCrypto(
+            cryptoModel: cryptoModel,
           ),
-          Text(
-            UtilBrasilFields.obterReal(
-              priceController.state.toDouble(),
-            ),
-            style: GoogleFonts.montserrat(
-              fontWeight: FontWeight.w700,
-              fontSize: 32,
-            ),
-          ),
+          const TextCurrentPrice(),
           Padding(
             padding: const EdgeInsets.only(
               top: 50,
@@ -79,125 +42,46 @@ class BodyDetailsScreen extends ConsumerWidget {
               model: cryptoModel,
             ),
           ),
-          ListTile(
-            title: Text(
-              'Preço atual',
-              style: TextStyle(
-                color: AppAssets().colorGrey,
-                fontSize: 19,
-              ),
+          ListTileDetailsCrypto(
+            detailTitle: 'Preço atual',
+            detailTrailing: UtilBrasilFields.obterReal(
+              priceController.state.toDouble(),
             ),
-            trailing: Text(
-              UtilBrasilFields.obterReal(
-                priceController.state.toDouble(),
-              ),
-              style: const TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 19,
-              ),
-            ),
-            contentPadding: EdgeInsets.zero,
-            shape: const Border(
-              top: BorderSide(
-                color: Color.fromRGBO(227, 228, 235, 1),
-              ),
-            ),
+            trailingColor: AppAssets().colorBlack,
+            trailingFontWeight: FontWeight.normal,
           ),
-          ListTile(
-            title: Text(
-              'Variação 24H',
-              style: TextStyle(
-                color: AppAssets().colorGrey,
-                fontSize: 19,
-              ),
-            ),
-            trailing: Text(
-              valueVariation.state <= 0
-                  ? '${valueVariation.state.toStringAsFixed(2)}%'
-                  : '+${valueVariation.state.toStringAsFixed(2)}%',
-              style: GoogleFonts.nunito(
-                fontWeight: FontWeight.w700,
-                fontSize: 19,
-                color: valueVariation.state < 0
-                    ? const Color.fromRGBO(205, 26, 26, 0.77)
-                    : Colors.green,
-              ),
-            ),
-            contentPadding: EdgeInsets.zero,
-            shape: const Border(
-              top: BorderSide(
-                color: Color.fromRGBO(227, 228, 235, 1),
-              ),
-            ),
+          ListTileDetailsCrypto(
+            detailTitle: 'Variação 24H',
+            detailTrailing: valueVariation.state <= 0
+                ? '${valueVariation.state.toStringAsFixed(2)}%'
+                : '+${valueVariation.state.toStringAsFixed(2)}%',
+            trailingColor: valueVariation.state < 0
+                ? const Color.fromRGBO(205, 26, 26, 0.77)
+                : Colors.green,
+            trailingFontWeight: FontWeight.w700,
           ),
-          ListTile(
-            title: Text(
-              'Quantidade',
-              style: TextStyle(
-                color: AppAssets().colorGrey,
-                fontSize: 19,
-              ),
-            ),
-            trailing: Text(
-              '${cryptoModel.amountCurrency.toStringAsFixed(8).replaceAll('.',',')} ${cryptoModel.shortName}',
-              style: const TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 19,
-              ),
-            ),
-            contentPadding: EdgeInsets.zero,
-            shape: const Border(
-              top: BorderSide(
-                color: Color.fromRGBO(227, 228, 235, 1),
-              ),
-            ),
+          ListTileDetailsCrypto(
+            detailTitle: 'Quantidade',
+            detailTrailing:
+                '${cryptoModel.amountCurrency.toStringAsFixed(8).replaceAll('.', ',')} ${cryptoModel.shortName}',
+            trailingColor: AppAssets().colorBlack,
+            trailingFontWeight: FontWeight.normal,
           ),
-          ListTile(
-            title: Text(
-              'Valor',
-              style: TextStyle(
-                color: AppAssets().colorGrey,
-                fontSize: 19,
-              ),
+          ListTileDetailsCrypto(
+            detailTitle: 'Valor',
+            detailTrailing: UtilBrasilFields.obterReal(
+              cryptoModel.currencyCustomerValue.toDouble(),
             ),
-            trailing: Text(
-              UtilBrasilFields.obterReal(
-                cryptoModel.currencyCustomerValue.toDouble(),
-              ),
-              style: const TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 19,
-              ),
-            ),
-            contentPadding: EdgeInsets.zero,
-            shape: const Border(
-              top: BorderSide(
-                color: Color.fromRGBO(227, 228, 235, 1),
-              ),
-            ),
+            trailingColor: AppAssets().colorBlack,
+            trailingFontWeight: FontWeight.normal,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 26),
-            child: MaterialButton(
-              onPressed: () {},
-              height: 56,
-              minWidth: MediaQuery.of(context).size.width,
-              color: AppAssets().colorPink,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: const Text(
-                'Converter moeda',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 17,
-                ),
-              ),
-            ),
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 26),
+            child: ButtonConvertCurrency(),
           ),
         ],
       ),
     );
   }
 }
+

@@ -1,12 +1,13 @@
 import 'package:brasil_fields/brasil_fields.dart';
-import 'package:crypto_list/screens/details/controller/coin_controller.dart';
-import 'package:crypto_list/screens/details/model/coin_model.dart';
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../shared/utils/app_assets.dart';
+import '../../details/controllers/coin_controller.dart';
+import '../../details/controllers/spots_controller.dart';
+import '../../details/model/coin_model.dart';
 import '../../details/provider/details_provider.dart';
 import '../../details/view/details_screen.dart';
 import '../model/crypto_model.dart';
