@@ -8,11 +8,11 @@ import '../../screens/transactions/view/transactions_screen.dart';
 class AppRoutes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case '/portfolio':
+      case PortfolioScreen.portfolioRoute:
         return MaterialPageRoute(builder: (_) => const PortfolioScreen());
-      case '/transactions':
+      case TransactionsScreen.transactionsRoute:
         return MaterialPageRoute(builder: (_) => const TransactionsScreen());
-      case '/portfolio/details':
+      case DetailsScreen.detailsRoute:
         var model = settings.arguments as CryptoModel;
         return MaterialPageRoute(
           builder: (_) => DetailsScreen(
@@ -22,7 +22,9 @@ class AppRoutes {
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
-            body: Center(child: Text('No route defined for ${settings.name}')),
+            body: Center(
+              child: Text('Sem rota definida para ${settings.name}'),
+            ),
           ),
         );
     }

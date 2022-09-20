@@ -12,21 +12,21 @@ class CryptoRepository {
         fullName: 'Bitcoin',
         cryptoIcon: AppAssets().iconBitcoin,
         currencyCustomerValue: Decimal.parse('6577'),
-        amountCurrency: 0.65,
+        amountCurrency: 0,
       ),
       CryptoModel(
         shortName: 'ETH',
         fullName: 'Ethereum',
         cryptoIcon: AppAssets().iconEthereum,
         currencyCustomerValue: Decimal.parse('7996'),
-        amountCurrency: 0.94,
+        amountCurrency: 0,
       ),
       CryptoModel(
         shortName: 'LTC',
         fullName: 'Litecoin',
         cryptoIcon: AppAssets().iconLitecoin,
         currencyCustomerValue: Decimal.parse('245'),
-        amountCurrency: 0.82,
+        amountCurrency: 0,
       ),
     ];
 

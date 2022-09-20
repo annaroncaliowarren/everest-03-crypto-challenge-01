@@ -1,11 +1,12 @@
 import 'dart:math';
 
+import 'package:crypto_list/screens/details/usecase/coin_usecase.dart';
 import 'package:decimal/decimal.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../portfolio/model/crypto_model.dart';
 import '../model/coin_model.dart';
-import '../repo/coin_repository.dart';
 
 class CoinController extends StateNotifier<List<CoinModel>> {
   CoinController() : super([]) {
@@ -13,8 +14,8 @@ class CoinController extends StateNotifier<List<CoinModel>> {
   }
 
   Future<List<CoinModel>> getAllCoins() async {
-    CoinRepository coinRepository = CoinRepository();
-    state = await coinRepository.getAllCoins();
+    CoinUseCase coinUseCase = CoinUseCase();
+    state = await coinUseCase.getAllCoins();
     return state;
   }
 }
@@ -24,13 +25,11 @@ final coinController = StateNotifierProvider<CoinController, List<CoinModel>>(
 );
 
 class GenerateSpotsListController extends StateNotifier<List<FlSpot>> {
-  GenerateSpotsListController(List<CoinModel> coins) : super([]) {
-    generateSpotsList(coins);
-  }
+  GenerateSpotsListController() : super([]);
 
   List<String> listValue = [];
 
-  Future<List<FlSpot>> generateSpotsList(List<CoinModel> coins) async {
+  Future<List<FlSpot>> generateSpotsList(List<CoinModel> coins, CryptoModel crypto) async {
     Decimal? yValue;
 
     state = List.generate(
@@ -38,7 +37,7 @@ class GenerateSpotsListController extends StateNotifier<List<FlSpot>> {
       (index) {
         if (index == 0) {
           for (CoinModel coin in coins) {
-            if (coin.base == 'BTC') {
+            if (crypto.shortName == coin.base) {
               yValue = Decimal.parse(coin.prices.latest);
               listValue.add(yValue!.toStringAsFixed(2));
             }
@@ -69,6 +68,7 @@ class GenerateSpotsListController extends StateNotifier<List<FlSpot>> {
   }
 }
 
-final spotsController = StateNotifierProvider<GenerateSpotsListController, List<FlSpot>>(
-  (ref) => GenerateSpotsListController(ref.watch(coinController)),
+final spotsController =
+    StateNotifierProvider<GenerateSpotsListController, List<FlSpot>>(
+  (ref) => GenerateSpotsListController(),
 );

@@ -39,7 +39,7 @@ class ContainerTopPortfolioScreen extends StatelessWidget {
           const TotalCurrencyCustomer(),
           Text(
             'Valor total de moedas',
-            style: GoogleFonts.nunito(
+            style: TextStyle(
               fontSize: 17,
               color: AppAssets().colorGrey,
             ),

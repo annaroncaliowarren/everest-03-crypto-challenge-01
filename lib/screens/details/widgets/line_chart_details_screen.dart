@@ -1,17 +1,26 @@
-import 'package:crypto_list/screens/details/controller/coin_controller.dart';
 import 'package:decimal/decimal.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../shared/utils/app_assets.dart';
+import '../../portfolio/model/crypto_model.dart';
+import '../controller/coin_controller.dart';
 import '../model/coin_model.dart';
 import '../provider/details_provider.dart';
 
 class LineChartDetailsScreen extends ConsumerStatefulWidget {
-  const LineChartDetailsScreen({Key? key}) : super(key: key);
+  final CryptoModel model;
+
+  const LineChartDetailsScreen({
+    Key? key,
+    required this.model,
+  }) : super(key: key);
 
   @override
-  ConsumerState<LineChartDetailsScreen> createState() => _LineChartDetailsScreen();
+  ConsumerState<LineChartDetailsScreen> createState() =>
+      _LineChartDetailsScreen();
 }
 
 class _LineChartDetailsScreen extends ConsumerState<LineChartDetailsScreen> {
@@ -51,7 +60,7 @@ class _LineChartDetailsScreen extends ConsumerState<LineChartDetailsScreen> {
                   lineTouch == null ||
                   lineTouch.lineBarSpots == null) {
                 for (CoinModel coin in coins) {
-                  if (coin.base == 'BTC') {
+                  if (coin.base == widget.model.shortName) {
                     ref.read(priceProvider.state).state =
                         Decimal.parse(coin.prices.latest);
                     valueVariation.state = 0;
@@ -123,7 +132,7 @@ class _LineChartDetailsScreen extends ConsumerState<LineChartDetailsScreen> {
               ),
             ),
             bottomTitles: AxisTitles(
-              axisNameSize: 45,
+              axisNameSize: 40,
               axisNameWidget: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.only(top: 15),
@@ -146,17 +155,17 @@ class _LineChartDetailsScreen extends ConsumerState<LineChartDetailsScreen> {
                       ),
                       minimumSize: const Size(29, 22),
                       backgroundColor: selectedIndex == index
-                          ? const Color.fromRGBO(238, 240, 247, 1)
+                          ? const Color.fromRGBO(227, 228, 235, 1)
                           : Colors.transparent,
                     ),
                     child: Text(
                       '${days[index]}D',
-                      style: TextStyle(
+                      style: GoogleFonts.sourceSansPro(
                         fontWeight: FontWeight.w700,
                         fontSize: 14,
                         color: selectedIndex == index
-                            ? const Color.fromRGBO(47, 47, 51, 1)
-                            : const Color.fromRGBO(117, 118, 128, 1),
+                            ? AppAssets().colorBlack
+                            : AppAssets().colorGrey,
                       ),
                     ),
                   );

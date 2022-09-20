@@ -6,7 +6,7 @@ import '../widgets/body_transactions_screen.dart';
 class TransactionsScreen extends StatelessWidget {
   const TransactionsScreen({Key? key}) : super(key: key);
 
-  static const route = '/transactions';
+  static const transactionsRoute = '/transactions';
 
   @override
   Widget build(BuildContext context) {
