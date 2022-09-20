@@ -3,8 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../shared/utils/app_assets.dart';
 
-class BodyMovementsScreen extends StatelessWidget {
-  const BodyMovementsScreen({Key? key}) : super(key: key);
+class BodyTransactionsScreen extends StatelessWidget {
+  const BodyTransactionsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

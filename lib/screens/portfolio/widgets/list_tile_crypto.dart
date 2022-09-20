@@ -1,9 +1,9 @@
 import 'package:brasil_fields/brasil_fields.dart';
-import '../../../shared/utils/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../shared/utils/app_assets.dart';
 import '../model/crypto_model.dart';
 import '../provider/wallet_providers.dart';
 

@@ -15,7 +15,7 @@ class ListViewCrypto extends HookConsumerWidget {
       visible: cryptoList.isNotEmpty,
       child: ListView.builder(
         shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         padding: EdgeInsets.zero,
         itemCount: cryptoList.length,
         itemBuilder: (context, index) {
