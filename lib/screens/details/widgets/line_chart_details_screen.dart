@@ -39,7 +39,7 @@ class _LineChartDetailsScreen extends ConsumerState<LineChartDetailsScreen> {
     getVariationValue(Decimal priceSelected) {
       int indexPrice = listPrices.indexOf(priceSelected.toStringAsFixed(2));
 
-      if (indexPrice != 0) {
+      if (indexPrice > 0) {
         valueVariation.state = ((priceSelected.toDouble() /
                     double.parse(listPrices[indexPrice - 1])) -
                 1) *
@@ -56,7 +56,7 @@ class _LineChartDetailsScreen extends ConsumerState<LineChartDetailsScreen> {
           lineTouchData: LineTouchData(
             touchCallback: (FlTouchEvent event, LineTouchResponse? lineTouch) {
               Decimal? selectedPrice;
-    
+
               if (event.isInterestedForInteractions ||
                   lineTouch == null ||
                   lineTouch.lineBarSpots == null) {
@@ -99,7 +99,7 @@ class _LineChartDetailsScreen extends ConsumerState<LineChartDetailsScreen> {
           ),
           lineBarsData: [
             LineChartBarData(
-              spots: daysSpotsList,
+              spots: spotsList.sublist(90 - days[selectedIndex]),
               isCurved: false,
               barWidth: 3,
               color: const Color.fromRGBO(224, 43, 87, 1),
@@ -144,8 +144,6 @@ class _LineChartDetailsScreen extends ConsumerState<LineChartDetailsScreen> {
                       setState(() {
                         selectedIndex = index;
                       });
-    
-                      daysSpotsList = spotsList.sublist(90 - days[index]);
                     },
                     style: TextButton.styleFrom(
                       padding: const EdgeInsets.symmetric(

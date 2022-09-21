@@ -4,7 +4,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../shared/utils/app_assets.dart';
 import '../../portfolio/model/crypto_model.dart';
-import '../controllers/spots_controller.dart';
 import '../provider/details_provider.dart';
 import 'button_convert_currency.dart';
 import 'line_chart_details_screen.dart';
@@ -24,7 +23,6 @@ class BodyDetailsScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final priceController = ref.watch(priceProvider.state);
     final valueVariation = ref.watch(valueVariationProvider.state);
-    final spotsList = ref.watch(spotsController);
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -40,11 +38,8 @@ class BodyDetailsScreen extends ConsumerWidget {
               top: 50,
               bottom: 30,
             ),
-            child: Visibility(
-              visible: spotsList.isNotEmpty,
-              child: LineChartDetailsScreen(
-                model: cryptoModel,
-              ),
+            child: LineChartDetailsScreen(
+              model: cryptoModel,
             ),
           ),
           ListTileDetailsCrypto(
