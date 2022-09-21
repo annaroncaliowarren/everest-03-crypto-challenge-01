@@ -126,18 +126,13 @@ class ListTileCrypto extends ConsumerWidget {
               left: 10,
               right: 3,
             ),
-            child: IconButton(
-              onPressed: () {},
-              alignment: Alignment.topCenter,
-              padding: EdgeInsets.zero,
-              constraints: const BoxConstraints(),
-              icon: Icon(
-                Icons.chevron_right,
-                size: 24,
-                color: AppAssets().colorGrey,
-              ),
+            child: Icon(
+              Icons.chevron_right,
+              size: 24,
+              color: AppAssets().colorGrey,
             ),
           ),
+          //),
         ],
       ),
     );

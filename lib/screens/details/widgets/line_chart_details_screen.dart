@@ -27,7 +27,6 @@ class LineChartDetailsScreen extends ConsumerStatefulWidget {
 class _LineChartDetailsScreen extends ConsumerState<LineChartDetailsScreen> {
   int selectedIndex = 0;
   List<int> days = [5, 15, 30, 45, 90];
-  List<FlSpot> daysSpotsList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -106,7 +105,6 @@ class _LineChartDetailsScreen extends ConsumerState<LineChartDetailsScreen> {
               dotData: FlDotData(show: false),
             ),
           ],
-          minY: 0,
           borderData: FlBorderData(
             border: const Border(
               bottom: BorderSide(
