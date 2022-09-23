@@ -8,6 +8,7 @@ class CryptoModel {
   String cryptoIcon;
   Decimal currencyCustomerValue;
   double amountCurrency;
+  Decimal currentPrice;
 
   CryptoModel({
     required this.shortName,
@@ -15,6 +16,7 @@ class CryptoModel {
     required this.cryptoIcon,
     required this.currencyCustomerValue,
     required this.amountCurrency,
+    required this.currentPrice,
   });
 
   Map<String, dynamic> toMap() {
@@ -24,6 +26,7 @@ class CryptoModel {
       'cryptoIcon': cryptoIcon,
       'currencyCustomerValue': currencyCustomerValue,
       'amountCurrency': amountCurrency,
+      'currentPrice' : currentPrice,
     };
     
     return result;
@@ -36,6 +39,7 @@ class CryptoModel {
       cryptoIcon: coin['cryptoIcon'] ?? '',
       currencyCustomerValue: Decimal.parse(coin['currencyCustomerValue']),
       amountCurrency: coin['amountCurrency']?.toDouble() ?? 0.0,
+      currentPrice: Decimal.parse(coin['currentPrice']),
     );
   }
 

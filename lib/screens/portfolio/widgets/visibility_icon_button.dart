@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../provider/wallet_providers.dart';
+import '../provider/portfolio_providers.dart';
 
 class VisibilityIconButton extends HookConsumerWidget {
   const VisibilityIconButton({Key? key}) : super(key: key);

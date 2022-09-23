@@ -6,7 +6,7 @@ import '../widgets/body_portfolio_screen.dart';
 class PortfolioScreen extends StatelessWidget {
   const PortfolioScreen({Key? key}) : super(key: key);
 
-  static const route = '/portfolio';
+  static const portfolioRoute = '/portfolio';
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,7 @@
-import 'screens/portfolio/view/portfolio_screen.dart';
-import 'shared/utils/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import 'shared/utils/app_routes.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);
@@ -10,13 +11,13 @@ class AppWidget extends StatelessWidget {
     return MaterialApp(
       title: 'Portfolio - Crypto List',
       debugShowCheckedModeBanner: false,
-      routes: appRoutes,
-      initialRoute: PortfolioScreen.route,
-      onUnknownRoute: (context) {
-        return MaterialPageRoute(
-          builder: (context) => const PortfolioScreen(),
-        );
-      },
+      initialRoute: '/portfolio',
+      onGenerateRoute: AppRoutes.generateRoute,
+      theme: ThemeData(
+        textTheme: GoogleFonts.nunitoTextTheme(
+          Theme.of(context).textTheme,
+        ),
+      ),
     );
   }
 }
