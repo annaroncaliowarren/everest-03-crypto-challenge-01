@@ -15,7 +15,7 @@ class CryptoRepository {
     final response = await cryptoEndpoint.getAllCryptoCoins();
     return List<CryptoResponse>.from(
       response.data.map(
-        (coin) => CryptoResponse.fromJson(coin),
+        (coin) => CryptoResponse.fromMap(coin),
       ),
     );
   }

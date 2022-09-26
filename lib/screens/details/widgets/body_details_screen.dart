@@ -1,14 +1,13 @@
 import 'package:brasil_fields/brasil_fields.dart';
-import 'package:crypto_list/screens/portfolio/models/coin_in_portfolio_model.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
-import '../../portfolio/models/portfolio_model.dart';
 
 import '../../../shared/use_case/providers/get_crypto_prices_list_use_case_provider.dart';
 import '../../../shared/use_case/view_data/crypto_view_data.dart';
 import '../../../shared/utils/app_assets.dart';
 import '../../../shared/widgets/default_failure_screen.dart';
+import '../../portfolio/models/coin_in_portfolio_model.dart';
+import '../../portfolio/models/portfolio_model.dart';
 import '../provider/details_provider.dart';
 import 'button_convert_currency.dart';
 import 'line_chart_details_screen.dart';
@@ -74,10 +73,14 @@ class BodyDetailsScreen extends ConsumerWidget {
                 );
               },
             ),
-            loading: () => const Center(
-              child: CircularProgressIndicator(
-                color: Colors.pink,
-                strokeWidth: 3,
+            loading: () => Center(
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height * 0.1,
+                width: MediaQuery.of(context).size.width * 0.9,
+                child: const CircularProgressIndicator(
+                  color: Colors.pink,
+                  strokeWidth: 3,
+                ),
               ),
             ),
           ),

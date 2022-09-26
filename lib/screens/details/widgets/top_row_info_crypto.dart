@@ -41,9 +41,9 @@ class TopRowInfoCrypto extends StatelessWidget {
               ),
             ],
           ),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(25),
-            child: Image.network(crypto.image),
+          Image.network(
+            crypto.image,
+            scale: 4.5,
           ),
         ],
       ),

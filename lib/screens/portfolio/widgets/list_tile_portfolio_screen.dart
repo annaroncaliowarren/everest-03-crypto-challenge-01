@@ -5,6 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../shared/use_case/view_data/crypto_view_data.dart';
 import '../../../shared/utils/app_assets.dart';
+import '../../../shared/utils/app_routes.dart';
 import '../../details/provider/details_provider.dart';
 import '../../details/view/details_screen.dart';
 import '../models/coin_in_portfolio_model.dart';
@@ -48,18 +49,15 @@ class ListTilePortfolioScreen extends ConsumerWidget {
         Navigator.pushNamed(
           context,
           DetailsScreen.detailsRoute,
-          arguments: {
+          arguments: DetailsArguments(
             crypto: crypto,
             portfolioData: portfolioData,
-          },
+          ),
         );
       },
-      leading: ClipRRect(
-        borderRadius: BorderRadius.circular(25),
-        child: Image.network(
-          crypto.image,
-          scale: 6,
-        ),
+      leading: Image.network(
+        crypto.image,
+        scale: 5,
       ),
       shape: const Border(
         top: BorderSide(
@@ -95,7 +93,7 @@ class ListTilePortfolioScreen extends ConsumerWidget {
             children: [
               Text(
                 isVisible
-                    ?  UtilBrasilFields.obterReal(customerCurrencyValue)
+                    ? UtilBrasilFields.obterReal(customerCurrencyValue)
                     : 'R\$ •••••',
                 style: TextStyle(
                   fontSize: 19,

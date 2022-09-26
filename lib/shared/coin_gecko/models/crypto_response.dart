@@ -26,28 +26,28 @@ class CryptoResponse {
 
   Map<String, dynamic> toJson() => _$CryptoResponseToJson(this);
 
-  // Map<String, dynamic> toMap() {
-  //   final result = <String, dynamic>{
-  //     'id': id,
-  //     'symbol': symbol,
-  //     'name': name,
-  //     'image': image,
-  //     'current_price': currentPrice,
-  //     'price_change_percentage_24h': priceChangePercentage24h,
-  //   };
+  Map<String, dynamic> toMap() {
+    final result = <String, dynamic>{
+      'id': id,
+      'symbol': symbol,
+      'name': name,
+      'image': image,
+      'current_price': currentPrice,
+      'price_change_percentage_24h': priceChangePercentage24h,
+    };
 
-  //   return result;
-  // }
+    return result;
+  }
 
-  // factory CryptoResponse.fromMap(Map<String, dynamic> map) {
-  //   return CryptoResponse(
-  //     id: map['id'] ?? '',
-  //     symbol: map['symbol'] ?? '',
-  //     name: map['name'] ?? '',
-  //     image: map['image'] ?? '',
-  //     currentPrice: Decimal.parse(map['current_price'].toString()),
-  //     priceChangePercentage24h:
-  //         map['price_change_percentage_24h']?.toDouble() ?? 0.0,
-  //   );
-  // }
+  factory CryptoResponse.fromMap(Map<String, dynamic> map) {
+    return CryptoResponse(
+      id: map['id'] ?? '',
+      symbol: map['symbol'] ?? '',
+      name: map['name'] ?? '',
+      image: map['image'] ?? '',
+      currentPrice: Decimal.parse(map['current_price'].toString()),
+      priceChangePercentage24h:
+          map['price_change_percentage_24h']?.toDouble() ?? 0.0,
+    );
+  }
 }
