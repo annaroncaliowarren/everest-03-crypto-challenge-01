@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 
-import '../../portfolio/model/crypto_model.dart';
+import '../../../shared/use_case/view_data/crypto_view_data.dart';
+import '../../portfolio/models/portfolio_model.dart';
 import '../widgets/app_bar_details_screen.dart';
 import '../widgets/body_details_screen.dart';
 
 class DetailsScreen extends StatelessWidget {
-  final CryptoModel cryptoModel;
+  final CryptoViewData crypto;
+  final PortfolioModel portfolioData;
 
   const DetailsScreen({
     Key? key,
-    required this.cryptoModel,
+    required this.crypto,
+    required this.portfolioData,
   }) : super(key: key);
 
   static const detailsRoute = '/portfolio/details';
@@ -20,7 +23,8 @@ class DetailsScreen extends StatelessWidget {
       appBar: const AppBarDetailsScreen(),
       body: SingleChildScrollView(
         child: BodyDetailsScreen(
-          cryptoModel: cryptoModel,
+          crypto: crypto,
+          portfolioData: portfolioData,
         ),
       ),
     );

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
+import '../../../shared/use_case/view_data/crypto_view_data.dart';
 import '../../../shared/utils/app_assets.dart';
-import '../../portfolio/model/crypto_model.dart';
 
 class TopRowInfoCrypto extends StatelessWidget {
   const TopRowInfoCrypto({
     Key? key,
-    required this.cryptoModel,
+    required this.crypto,
   }) : super(key: key);
 
-  final CryptoModel cryptoModel;
+  final CryptoViewData crypto;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class TopRowInfoCrypto extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                cryptoModel.fullName,
+                crypto.name,
                 style: const TextStyle(
                   fontWeight: FontWeight.w700,
                   fontSize: 34,
@@ -33,7 +33,7 @@ class TopRowInfoCrypto extends StatelessWidget {
               ),
               const SizedBox(height: 4),
               Text(
-                cryptoModel.shortName,
+                crypto.symbol.toUpperCase(),
                 style: TextStyle(
                   fontSize: 17,
                   color: AppAssets().colorGrey,
@@ -43,7 +43,7 @@ class TopRowInfoCrypto extends StatelessWidget {
           ),
           ClipRRect(
             borderRadius: BorderRadius.circular(25),
-            child: Image.asset(cryptoModel.cryptoIcon),
+            child: Image.network(crypto.image),
           ),
         ],
       ),

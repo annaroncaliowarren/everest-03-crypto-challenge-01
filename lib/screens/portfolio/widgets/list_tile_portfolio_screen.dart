@@ -1,70 +1,65 @@
 import 'package:brasil_fields/brasil_fields.dart';
-import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../shared/use_case/view_data/crypto_view_data.dart';
 import '../../../shared/utils/app_assets.dart';
-import '../../details/controllers/coin_controller.dart';
-import '../../details/controllers/spots_controller.dart';
-import '../../details/model/coin_model.dart';
 import '../../details/provider/details_provider.dart';
 import '../../details/view/details_screen.dart';
-import '../model/crypto_model.dart';
-import '../provider/portfolio_providers.dart';
+import '../models/coin_in_portfolio_model.dart';
+import '../providers/portfolio_providers.dart';
 
-class ListTileCrypto extends ConsumerWidget {
-  final CryptoModel cryptoModel;
+class ListTilePortfolioScreen extends ConsumerWidget {
+  final CryptoViewData crypto;
 
-  const ListTileCrypto({
+  const ListTilePortfolioScreen({
     Key? key,
-    required this.cryptoModel,
+    required this.crypto,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     bool isVisible = ref.watch(isVisibleProvider);
-    final coins = ref.watch(coinController);
-    final valueVariation = ref.watch(valueVariationProvider.state);
+    final portfolioData = ref.watch(portfolioModelProvider);
+    final customerCurrencyValue = portfolioData.listCoins
+        .firstWhere((c) => c.cryptoShortName == crypto.symbol.toUpperCase())
+        .currencyCustomerValue
+        .toDouble();
 
-    double getAmountCurrency() {
-      for (CoinModel coin in coins) {
-        if (coin.base == cryptoModel.shortName) {
-          cryptoModel.amountCurrency =
-              (cryptoModel.currencyCustomerValue.toDouble() /
-                  double.parse(coin.prices.latest));
+    CoinInPortfolioModel getAmountCurrency() {
+      for (CoinInPortfolioModel coin in portfolioData.listCoins) {
+        if (coin.cryptoShortName == crypto.symbol.toUpperCase()) {
+          coin.amountCurrency = (coin.currencyCustomerValue.toDouble() /
+              double.parse(
+                crypto.currentPrice.toString(),
+              ));
         }
       }
-      return cryptoModel.amountCurrency;
-    }
-
-    Decimal getCurrentPrice() {
-      for (CoinModel coin in coins) {
-        if (coin.base == cryptoModel.shortName) {
-          cryptoModel.currentPrice = Decimal.parse(coin.prices.latest);
-          ref.read(priceProvider.state).state =
-              Decimal.parse(coin.prices.latest);
-          valueVariation.state = 0;
-        }
-      }
-      return cryptoModel.currentPrice;
+      return portfolioData.listCoins.firstWhere(
+        (c) => c.cryptoShortName == crypto.symbol.toUpperCase(),
+      );
     }
 
     return ListTile(
       onTap: () {
-        getCurrentPrice();
-
-        ref.read(spotsController.notifier).generateSpotsList(cryptoModel);
+        ref.read(priceProvider.state).state = crypto.currentPrice;
 
         Navigator.pushNamed(
           context,
           DetailsScreen.detailsRoute,
-          arguments: cryptoModel,
+          arguments: {
+            crypto: crypto,
+            portfolioData: portfolioData,
+          },
         );
       },
       leading: ClipRRect(
         borderRadius: BorderRadius.circular(25),
-        child: Image.asset(cryptoModel.cryptoIcon),
+        child: Image.network(
+          crypto.image,
+          scale: 6,
+        ),
       ),
       shape: const Border(
         top: BorderSide(
@@ -77,14 +72,14 @@ class ListTileCrypto extends ConsumerWidget {
       ),
       horizontalTitleGap: 8,
       title: Text(
-        cryptoModel.shortName,
+        crypto.symbol.toUpperCase(),
         style: GoogleFonts.sourceSansPro(
           fontSize: 19,
           color: AppAssets().colorBlack,
         ),
       ),
       subtitle: Text(
-        cryptoModel.fullName,
+        crypto.name,
         style: GoogleFonts.sourceSansPro(
           fontSize: 15,
           color: AppAssets().colorGrey,
@@ -100,8 +95,7 @@ class ListTileCrypto extends ConsumerWidget {
             children: [
               Text(
                 isVisible
-                    ? UtilBrasilFields.obterReal(
-                        cryptoModel.currencyCustomerValue.toDouble())
+                    ?  UtilBrasilFields.obterReal(customerCurrencyValue)
                     : 'R\$ •••••',
                 style: TextStyle(
                   fontSize: 19,
@@ -112,8 +106,8 @@ class ListTileCrypto extends ConsumerWidget {
               const SizedBox(height: 4),
               Text(
                 isVisible
-                    ? '${getAmountCurrency().toStringAsFixed(2)} ${cryptoModel.shortName}'
-                    : '•••• ${cryptoModel.shortName}',
+                    ? '${getAmountCurrency().amountCurrency.toStringAsFixed(2)} ${crypto.symbol.toUpperCase()}'
+                    : '•••• ${crypto.symbol.toUpperCase()}',
                 style: TextStyle(
                   fontSize: 15,
                   color: AppAssets().colorGrey,
