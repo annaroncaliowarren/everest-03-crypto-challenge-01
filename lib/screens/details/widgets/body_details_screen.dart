@@ -27,19 +27,20 @@ class BodyDetailsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    CoinInPortfolioModel? coinInPortfolio;
+
+    final currentPrice = ref.watch(priceProvider);
     final listCryptoPrices = ref.watch(
-      cryptoPricesListProvider(
+      getCryptoPricesListProvider(
         crypto.name.toLowerCase(),
       ),
     );
-    final currentPrice = ref.watch(priceProvider);
-    CoinInPortfolioModel? coinInPortfolio;
 
     CoinInPortfolioModel getCoinInPortfolioData() {
       for (CoinInPortfolioModel coin in portfolioData.listCoins) {
         if (coin.cryptoShortName == crypto.symbol.toUpperCase()) {
           coinInPortfolio = coin;
-        } 
+        }
       }
       return coinInPortfolio!;
     }
@@ -54,33 +55,26 @@ class BodyDetailsScreen extends ConsumerWidget {
           ),
           const TextCurrentPrice(),
           listCryptoPrices.when(
-            data: (data) => Padding(
-              padding: const EdgeInsets.only(
-                top: 50,
-                bottom: 30,
-              ),
-              child: LineChartDetailsScreen(
-                listPricesCrypto: data,
-                crypto: crypto,
-              ),
+            data: (data) => LineChartDetailsScreen(
+              listPricesCrypto: data,
+              crypto: crypto,
             ),
             error: (error, stackTrace) => DefaultFailureScreen(
               onPressed: () {
                 ref.refresh(
-                  cryptoPricesListProvider(
+                  getCryptoPricesListProvider(
                     crypto.name.toLowerCase(),
                   ),
                 );
               },
             ),
-            loading: () => Center(
-              child: SizedBox(
-                height: MediaQuery.of(context).size.height * 0.1,
-                width: MediaQuery.of(context).size.width * 0.9,
-                child: const CircularProgressIndicator(
-                  color: Colors.pink,
-                  strokeWidth: 3,
-                ),
+            loading: () => Container(
+              height: MediaQuery.of(context).size.height * 0.28,
+              width: MediaQuery.of(context).size.width * 0.9,
+              alignment: Alignment.center,
+              child: const CircularProgressIndicator(
+                color: Colors.pink,
+                strokeWidth: 3,
               ),
             ),
           ),

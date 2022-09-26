@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../shared/use_case/providers/get_crypto_data_use_case_provider.dart';
+import '../../../shared/use_case/providers/get_all_crypto_coins_use_case_provider.dart';
 import '../../../shared/widgets/default_failure_screen.dart';
 import 'container_top_portfolio_screen.dart';
 import 'list_tile_portfolio_screen.dart';
@@ -11,13 +11,13 @@ class BodyPortfolioScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final cryptoData = ref.watch(cryptoDataProvider);
+    final cryptoCoins = ref.watch(getAllCryptoCoinsProvider);
 
     return Column(
       children: [
         const ContainerTopPortfolioScreen(),
         Expanded(
-          child: cryptoData.when(
+          child: cryptoCoins.when(
             data: (data) => ListView.builder(
               itemCount: data.listCryptoViewData.length,
               itemBuilder: (context, index) {
@@ -30,7 +30,7 @@ class BodyPortfolioScreen extends ConsumerWidget {
             ),
             error: (error, stackTrace) => DefaultFailureScreen(
               onPressed: () {
-                ref.refresh(cryptoDataProvider);
+                ref.refresh(getAllCryptoCoinsProvider);
               },
             ),
             loading: () => const Center(

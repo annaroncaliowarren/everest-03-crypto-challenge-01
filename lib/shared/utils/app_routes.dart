@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:crypto_list/screens/portfolio/models/portfolio_model.dart';
-import 'package:crypto_list/shared/use_case/view_data/crypto_view_data.dart';
+import '../../screens/portfolio/models/portfolio_model.dart';
+import '../use_case/view_data/crypto_view_data.dart';
 
 import '../../screens/details/view/details_screen.dart';
 import '../../screens/portfolio/view/portfolio_screen.dart';

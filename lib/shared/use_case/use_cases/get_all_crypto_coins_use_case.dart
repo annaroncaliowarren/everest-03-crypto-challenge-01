@@ -1,11 +1,11 @@
-import '../../repository/crypto_repository.dart';
+import '../../repository/get_all_crypto_coins_repository.dart';
 import '../mapper/crypto_mapper.dart';
 import '../view_data/crypto_list_view_data.dart';
 
-class GetCryptoDataUseCase {
-  final CryptoRepository repository;
+class GetAllCryptoCoinsUseCase {
+  final GetAllCryptoCoinsRepository repository;
 
-  GetCryptoDataUseCase({
+  GetAllCryptoCoinsUseCase({
     required this.repository,
   });
 
