@@ -21,9 +21,9 @@ class WrapListTileDetailsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    CoinInPortfolioModel? coinInPortfolio;
-
     final currentPrice = ref.watch(priceProvider);
+    
+    CoinInPortfolioModel? coinInPortfolio;
 
     CoinInPortfolioModel getCoinInPortfolioData() {
       for (CoinInPortfolioModel coin in portfolioData.listCoins) {

@@ -17,7 +17,7 @@ class AppRoutes {
       case DetailsScreen.detailsRoute:
         return MaterialPageRoute(
           builder: (context) {
-            DetailsArguments arguments = settings.arguments as DetailsArguments;
+            final arguments = settings.arguments as DetailsArguments;
             return DetailsScreen(
               crypto: arguments.crypto,
               portfolioData: arguments.portfolioData,

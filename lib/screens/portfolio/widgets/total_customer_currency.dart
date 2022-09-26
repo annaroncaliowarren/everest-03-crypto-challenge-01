@@ -14,6 +14,7 @@ class TotalCurrencyCustomer extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     bool isVisible = ref.watch(isVisibleProvider);
     final listCryptoPortfolio = ref.watch(portfolioModelProvider);
+    
     double totalCurrency = 0;
 
     double getTotalCurrency() {

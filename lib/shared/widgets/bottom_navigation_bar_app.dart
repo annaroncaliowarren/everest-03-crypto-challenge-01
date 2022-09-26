@@ -7,12 +7,12 @@ import '../../screens/transactions/view/transactions_screen.dart';
 import '../providers/index_provider.dart';
 import '../utils/app_assets.dart';
 
-class BottomNavigationBarApp extends HookConsumerWidget {
+class BottomNavigationBarApp extends ConsumerWidget {
   const BottomNavigationBarApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final pageSelectedIndex = ref.watch(selectedIndexProvider.state);
+    final pageSelectedIndex = ref.watch(selectedIndexBottomNavigationBarProvider.state);
 
     return BottomNavigationBar(
       items: <BottomNavigationBarItem>[

@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../providers/portfolio_providers.dart';
 
-class VisibilityIconButton extends HookConsumerWidget {
+class VisibilityIconButton extends ConsumerWidget {
   const VisibilityIconButton({Key? key}) : super(key: key);
 
   @override

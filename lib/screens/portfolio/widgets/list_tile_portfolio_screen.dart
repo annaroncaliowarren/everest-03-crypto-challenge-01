@@ -24,7 +24,7 @@ class ListTilePortfolioScreen extends ConsumerWidget {
     bool isVisible = ref.watch(isVisibleProvider);
     final portfolioData = ref.watch(portfolioModelProvider);
     final customerCurrencyValue = portfolioData.listCoins
-        .firstWhere((c) => c.cryptoShortName == crypto.symbol.toUpperCase())
+        .firstWhere((coin) => coin.cryptoShortName == crypto.symbol.toUpperCase())
         .currencyCustomerValue
         .toDouble();
 
@@ -38,7 +38,7 @@ class ListTilePortfolioScreen extends ConsumerWidget {
         }
       }
       return portfolioData.listCoins.firstWhere(
-        (c) => c.cryptoShortName == crypto.symbol.toUpperCase(),
+        (coin) => coin.cryptoShortName == crypto.symbol.toUpperCase(),
       );
     }
 
@@ -124,7 +124,6 @@ class ListTilePortfolioScreen extends ConsumerWidget {
               color: AppAssets().colorGrey,
             ),
           ),
-          //),
         ],
       ),
     );

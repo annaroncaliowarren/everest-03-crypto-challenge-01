@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../shared/utils/app_assets.dart';
 
-class AppBarDetailsScreen extends StatelessWidget implements PreferredSizeWidget {
+class AppBarDetailsScreen extends StatelessWidget
+    implements PreferredSizeWidget {
   const AppBarDetailsScreen({Key? key}) : super(key: key);
 
   @override
@@ -18,19 +19,12 @@ class AppBarDetailsScreen extends StatelessWidget implements PreferredSizeWidget
       ),
       backgroundColor: Colors.white,
       elevation: 1,
-      leading: IconButton(
-        onPressed: () {
-          Navigator.of(context).pop();
-        },
-        icon: const Icon(
-          Icons.arrow_back,
-          color: Colors.black,
-          size: 23,
-        ),
+      iconTheme: IconThemeData(
+        color: AppAssets().colorBlack,
       ),
     );
   }
-  
+
   @override
   Size get preferredSize => const Size(double.maxFinite, 56);
 }
