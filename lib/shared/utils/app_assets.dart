@@ -9,6 +9,7 @@ class AppAssets {
 
   final imageWorkInProgress = 'assets/images/work_in_progress.png';
   final imageExclamation = 'assets/images/exclamation.png';
+  final imageRepeatArrow = 'assets/images/repeat_arrow.png';
 
   Color colorPink = const Color.fromRGBO(224, 43, 87, 1);
   Color colorGrey = const Color.fromRGBO(117, 118, 128, 1);

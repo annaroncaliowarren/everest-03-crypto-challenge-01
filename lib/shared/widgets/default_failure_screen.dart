@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import '../utils/app_assets.dart';
 
 class DefaultFailureScreen extends StatelessWidget {
-  void Function()? onPressed;
+  final void Function()? onPressed;
 
-  DefaultFailureScreen({
+  const DefaultFailureScreen({
     Key? key,
     required this.onPressed,
   }) : super(key: key);
