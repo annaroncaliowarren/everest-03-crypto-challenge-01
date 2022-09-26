@@ -1,8 +1,8 @@
-import '../coin_gecko/endpoints/get_all_crypto_coins_endpoint.dart';
+import '../coin_gecko/endpoints/crypto_endpoints.dart';
 import '../coin_gecko/models/crypto_response.dart';
 
 class GetAllCryptoCoinsRepository {
-  final GetAllCryptoCoinsEndpoint cryptoEndpoint;
+  final CryptoEndpoints cryptoEndpoint;
 
   GetAllCryptoCoinsRepository({
     required this.cryptoEndpoint,

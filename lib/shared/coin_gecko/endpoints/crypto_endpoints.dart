@@ -1,9 +1,19 @@
 import 'package:dio/dio.dart';
 
-class GetCryptoPricesListEndpoint {
+class CryptoEndpoints {
   final Dio _dio;
 
-  GetCryptoPricesListEndpoint(this._dio);
+  CryptoEndpoints(this._dio);
+
+  Future<Response> getAllCryptoCoins() async {
+    return _dio.get(
+      '/coins/markets',
+      queryParameters: {
+        'vs_currency': 'brl',
+        'ids': 'bitcoin,ethereum,litecoin,dogecoin',
+      },
+    );
+  }
 
   Future<Response> getCryptoPricesList(String cryptoFullName) async {
     return _dio.get(

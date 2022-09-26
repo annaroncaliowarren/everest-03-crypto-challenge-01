@@ -1,15 +1,15 @@
 import 'package:dio/dio.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../get_crypto_prices_list_endpoint.dart';
+import 'crypto_endpoints.dart';
 
-final getCryptoPricesListEndpointProvider = Provider<GetCryptoPricesListEndpoint>(
+final cryptoEndpointsProvider = Provider(
   (ref) {
     final dio = Dio(
       BaseOptions(
         baseUrl: 'https://api.coingecko.com/api/v3/',
       ),
     );
-    return GetCryptoPricesListEndpoint(dio);
+    return CryptoEndpoints(dio);
   },
 );

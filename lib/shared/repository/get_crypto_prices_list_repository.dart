@@ -1,18 +1,18 @@
 import 'package:decimal/decimal.dart';
 
-import '../coin_gecko/endpoints/get_crypto_prices_list_endpoint.dart';
+import '../coin_gecko/endpoints/crypto_endpoints.dart';
 import '../coin_gecko/models/crypto_prices_list_response.dart';
 
 class GetCryptoPricesListRepository {
-  final GetCryptoPricesListEndpoint endpoint;
+  final CryptoEndpoints cryptoEndpoint;
 
   GetCryptoPricesListRepository({
-    required this.endpoint,
+    required this.cryptoEndpoint,
   });
 
   Future<CryptoPricesListResponse> getCryptoPricesList(
       String cryptoFullName) async {
-    final response = await endpoint.getCryptoPricesList(cryptoFullName);
+    final response = await cryptoEndpoint.getCryptoPricesList(cryptoFullName);
 
     List<Decimal> listPricesCrypto = response.data['prices']
         .map<Decimal>(
