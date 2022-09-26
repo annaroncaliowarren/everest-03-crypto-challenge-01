@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'crypto_endpoints.dart';
 
-final cryptoEndpointsProvider = Provider(
+final cryptoEndpointsProvider = Provider<CryptoEndpoints>(
   (ref) {
     final dio = Dio(
       BaseOptions(
