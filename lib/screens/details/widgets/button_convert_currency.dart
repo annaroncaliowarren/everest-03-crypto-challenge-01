@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'package:crypto_list/shared/use_case/view_data/crypto_view_data.dart';
-
+import '../../../shared/use_case/view_data/crypto_view_data.dart';
 import '../../../shared/utils/app_assets.dart';
 import '../../conversion/provider/conversion_provider.dart';
 import '../../conversion/view/conversion_screen.dart';
