@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../screens/portfolio/models/portfolio_model.dart';
+import '../use_case/view_data/crypto_view_data.dart';
+
 import '../../screens/details/view/details_screen.dart';
-import '../../screens/portfolio/model/crypto_model.dart';
 import '../../screens/portfolio/view/portfolio_screen.dart';
 import '../../screens/transactions/view/transactions_screen.dart';
 
@@ -13,11 +15,14 @@ class AppRoutes {
       case TransactionsScreen.transactionsRoute:
         return MaterialPageRoute(builder: (_) => const TransactionsScreen());
       case DetailsScreen.detailsRoute:
-        var model = settings.arguments as CryptoModel;
         return MaterialPageRoute(
-          builder: (_) => DetailsScreen(
-            cryptoModel: model,
-          ),
+          builder: (context) {
+            final arguments = settings.arguments as DetailsArguments;
+            return DetailsScreen(
+              crypto: arguments.crypto,
+              portfolioData: arguments.portfolioData,
+            );
+          },
         );
       default:
         return MaterialPageRoute(
@@ -29,4 +34,14 @@ class AppRoutes {
         );
     }
   }
+}
+
+class DetailsArguments {
+  final CryptoViewData crypto;
+  final PortfolioModel portfolioData;
+
+  DetailsArguments({
+    required this.crypto,
+    required this.portfolioData,
+  });
 }

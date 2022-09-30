@@ -4,22 +4,22 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../shared/utils/app_assets.dart';
-import '../controller/crypto_controller.dart';
-import '../model/crypto_model.dart';
-import '../provider/portfolio_providers.dart';
+import '../models/coin_in_portfolio_model.dart';
+import '../providers/portfolio_providers.dart';
 
-class TotalCurrencyCustomer extends HookConsumerWidget {
+class TotalCurrencyCustomer extends ConsumerWidget {
   const TotalCurrencyCustomer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     bool isVisible = ref.watch(isVisibleProvider);
-    final cryptos = ref.watch(cryptoController);
+    final listCryptoPortfolio = ref.watch(portfolioModelProvider);
+    
     double totalCurrency = 0;
 
     double getTotalCurrency() {
-      for (CryptoModel model in cryptos) {
-        totalCurrency += model.currencyCustomerValue.toDouble();
+      for (CoinInPortfolioModel coin in listCryptoPortfolio.listCoins) {
+        totalCurrency += coin.currencyCustomerValue.toDouble();
       }
       return totalCurrency;
     }
