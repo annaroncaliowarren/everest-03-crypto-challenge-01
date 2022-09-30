@@ -10,7 +10,7 @@ class CryptoEndpoints {
       '/coins/markets',
       queryParameters: {
         'vs_currency': 'brl',
-        'ids': 'bitcoin,ethereum,litecoin,dogecoin',
+        'ids': 'bitcoin,ethereum,litecoin,dogecoin,cardano,tether',
       },
     );
   }

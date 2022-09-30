@@ -19,6 +19,8 @@ class BodyPortfolioScreen extends ConsumerWidget {
         Expanded(
           child: cryptoCoins.when(
             data: (data) => ListView.builder(
+              physics: const BouncingScrollPhysics(),
+              shrinkWrap: true,
               itemCount: data.listCryptoViewData.length,
               itemBuilder: (context, index) {
                 final crypto = data.listCryptoViewData[index];

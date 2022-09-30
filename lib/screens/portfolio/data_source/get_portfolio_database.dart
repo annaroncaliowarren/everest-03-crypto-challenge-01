@@ -27,6 +27,16 @@ class GetPortfolioDatabase {
           currencyCustomerValue: Decimal.parse('3450'),
           amountCurrency: 0,
         ),
+        CoinInPortfolioModel(
+          cryptoShortName: 'ADA',
+          currencyCustomerValue: Decimal.parse('324'),
+          amountCurrency: 0,
+        ),
+        CoinInPortfolioModel(
+          cryptoShortName: 'USDT',
+          currencyCustomerValue: Decimal.parse('20302'),
+          amountCurrency: 0,
+        ),
       ],
     );
   }
