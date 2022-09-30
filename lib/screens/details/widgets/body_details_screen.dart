@@ -78,9 +78,12 @@ class BodyDetailsScreen extends ConsumerWidget {
             crypto: crypto,
             portfolioData: portfolioData,
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 26),
-            child: ButtonConvertCurrency(),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 26),
+            child: ButtonConvertCurrency(
+              portfolioData: portfolioData,
+              crypto: crypto,
+            ),
           ),
         ],
       ),

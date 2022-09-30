@@ -1,3 +1,4 @@
+import 'package:crypto_list/screens/conversion/view/conversion_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../screens/portfolio/models/portfolio_model.dart';
@@ -21,6 +22,15 @@ class AppRoutes {
             return DetailsScreen(
               crypto: arguments.crypto,
               portfolioData: arguments.portfolioData,
+            );
+          },
+        );
+      case ConversionScreen.conversionRoute:
+        return MaterialPageRoute(
+          builder: (_) {
+            final conversionArg = settings.arguments as PortfolioModel;
+            return ConversionScreen(
+              portfolioData: conversionArg,
             );
           },
         );
