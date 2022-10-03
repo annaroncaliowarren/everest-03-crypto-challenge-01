@@ -4,10 +4,10 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../shared/use_case/view_data/crypto_view_data.dart';
 import '../../../shared/utils/app_assets.dart';
+import '../../../shared/widgets/list_tile_info_default_app.dart';
 import '../../portfolio/models/coin_in_portfolio_model.dart';
 import '../../portfolio/models/portfolio_model.dart';
 import '../provider/details_provider.dart';
-import '../../../shared/widgets/list_tile_info_default_app.dart';
 
 class WrapListTileDetailsScreen extends ConsumerWidget {
   const WrapListTileDetailsScreen({

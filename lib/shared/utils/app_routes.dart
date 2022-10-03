@@ -1,4 +1,4 @@
-import 'package:crypto_list/screens/confirmed_conversion/view/confirmed_conversion_screen.dart';
+import '../../screens/confirmed_conversion/view/confirmed_conversion_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../screens/conversion/view/conversion_screen.dart';

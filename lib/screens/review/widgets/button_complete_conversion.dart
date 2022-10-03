@@ -1,6 +1,7 @@
-import 'package:crypto_list/screens/confirmed_conversion/view/confirmed_conversion_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+import '../../confirmed_conversion/view/confirmed_conversion_screen.dart';
 
 class ButtonCompleteConversion extends ConsumerWidget {
   const ButtonCompleteConversion({Key? key}) : super(key: key);

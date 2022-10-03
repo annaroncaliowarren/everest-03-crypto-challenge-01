@@ -1,4 +1,4 @@
-import 'package:crypto_list/shared/utils/app_assets.dart';
+import '../../../shared/utils/app_assets.dart';
 import 'package:flutter/material.dart';
 
 class BodyConfirmedConversionScreen extends StatelessWidget {
