@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../../../shared/utils/app_assets.dart';
+import '../utils/app_assets.dart';
 
-class ListTileDetailsCrypto extends StatelessWidget {
+class ListTileInfoDefaultApp extends StatelessWidget {
   final String detailTitle;
   final String detailTrailing;
   final Color trailingColor;
   final FontWeight trailingFontWeight;
 
-  const ListTileDetailsCrypto({
+  const ListTileInfoDefaultApp({
     Key? key,
     required this.detailTitle,
     required this.detailTrailing,

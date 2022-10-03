@@ -7,7 +7,7 @@ import '../../../shared/utils/app_assets.dart';
 import '../../portfolio/models/coin_in_portfolio_model.dart';
 import '../../portfolio/models/portfolio_model.dart';
 import '../provider/details_provider.dart';
-import 'list_tile_details_crypto.dart';
+import '../../../shared/widgets/list_tile_info_default_app.dart';
 
 class WrapListTileDetailsScreen extends ConsumerWidget {
   const WrapListTileDetailsScreen({
@@ -36,7 +36,7 @@ class WrapListTileDetailsScreen extends ConsumerWidget {
 
     return Wrap(
       children: [
-        ListTileDetailsCrypto(
+        ListTileInfoDefaultApp(
           detailTitle: 'Preço atual',
           detailTrailing: UtilBrasilFields.obterReal(
             currentPrice.toDouble(),
@@ -44,7 +44,7 @@ class WrapListTileDetailsScreen extends ConsumerWidget {
           trailingColor: AppAssets().colorBlack,
           trailingFontWeight: FontWeight.normal,
         ),
-        ListTileDetailsCrypto(
+        ListTileInfoDefaultApp(
           detailTitle: 'Variação 24H',
           detailTrailing: crypto.priceChangePercentage24h <= 0
               ? '${crypto.priceChangePercentage24h.toStringAsFixed(2)}%'
@@ -54,14 +54,14 @@ class WrapListTileDetailsScreen extends ConsumerWidget {
               : Colors.green,
           trailingFontWeight: FontWeight.w700,
         ),
-        ListTileDetailsCrypto(
+        ListTileInfoDefaultApp(
           detailTitle: 'Quantidade',
           detailTrailing:
               '${getCoinInPortfolioData().amountCurrency.toStringAsFixed(8).replaceAll('.', ',')} ${crypto.symbol.toUpperCase()}',
           trailingColor: AppAssets().colorBlack,
           trailingFontWeight: FontWeight.normal,
         ),
-        ListTileDetailsCrypto(
+        ListTileInfoDefaultApp(
           detailTitle: 'Valor',
           detailTrailing: UtilBrasilFields.obterReal(
             getCoinInPortfolioData().currencyCustomerValue.toDouble(),
