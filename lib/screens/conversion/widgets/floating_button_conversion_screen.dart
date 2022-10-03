@@ -1,3 +1,4 @@
+import 'package:crypto_list/screens/review/review_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -11,7 +12,14 @@ class FloatingButtonConversionScreen extends ConsumerWidget {
     final isAble = ref.watch(isAbleFloatingBtnProvider.state);
 
     return FloatingActionButton(
-      onPressed: isAble.state ? () {} : null,
+      onPressed: isAble.state
+          ? () {
+              Navigator.pushNamed(
+                context,
+                ReviewScreen.reviewRoute,
+              );
+            }
+          : null,
       backgroundColor: isAble.state
           ? const Color.fromRGBO(224, 43, 87, 1)
           : const Color.fromRGBO(201, 202, 212, 1),

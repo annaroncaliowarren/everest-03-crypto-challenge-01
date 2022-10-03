@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 
-import '../../../shared/utils/app_assets.dart';
+import '../utils/app_assets.dart';
 
-class AppBarDetailsScreen extends StatelessWidget
-    implements PreferredSizeWidget {
-  const AppBarDetailsScreen({Key? key}) : super(key: key);
+class AppBarDefaultApp extends StatelessWidget implements PreferredSizeWidget {
+  final String title;
+
+  const AppBarDefaultApp({
+    Key? key,
+    required this.title,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       title: Text(
-        'Detalhes',
+        title,
         style: TextStyle(
           color: AppAssets().colorBlack,
           fontWeight: FontWeight.w700,
