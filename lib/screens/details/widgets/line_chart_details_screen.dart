@@ -89,39 +89,10 @@ class _LineChartDetailsScreen extends ConsumerState<LineChartDetailsScreen> {
                   },
                 ).toList();
               },
-              touchTooltipData: LineTouchTooltipData(
-                getTooltipItems: (touchedSpots) {
-                  List<LineTooltipItem> prices = [];
-                  for (LineBarSpot spot in touchedSpots) {
-                    prices.add(
-                      LineTooltipItem(
-                        UtilBrasilFields.obterReal(spot.y),
-                        const TextStyle(
-                          color: Colors.pink,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 12,
-                        ),
-                      ),
-                    );
-                  }
-                  return prices;
-                },
-                tooltipBgColor: Colors.transparent,
-                showOnTopOfTheChartBoxArea: true,
-                fitInsideHorizontally: true,
-              ),
+              touchTooltipData: touchTooltipDataLineChart(),
             ),
             lineBarsData: [
-              LineChartBarData(
-                spots: spotsList.sublist(
-                  widget.listPricesCrypto.listPrices.length -
-                      days[selectedIndex],
-                ),
-                isCurved: false,
-                barWidth: 3,
-                color: const Color.fromRGBO(224, 43, 87, 1),
-                dotData: FlDotData(show: false),
-              ),
+              dataLineChart(),
             ],
             borderData: FlBorderData(
               border: const Border(
@@ -148,49 +119,89 @@ class _LineChartDetailsScreen extends ConsumerState<LineChartDetailsScreen> {
                   showTitles: false,
                 ),
               ),
-              bottomTitles: AxisTitles(
-                axisNameSize: 40,
-                axisNameWidget: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  padding: const EdgeInsets.only(top: 15),
-                  itemCount: days.length,
-                  itemBuilder: (context, index) {
-                    return TextButton(
-                      onPressed: () {
-                        setState(() {
-                          selectedIndex = index;
-                        });
-                      },
-                      style: TextButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 6,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        minimumSize: const Size(29, 22),
-                        backgroundColor: selectedIndex == index
-                            ? const Color.fromRGBO(227, 228, 235, 1)
-                            : Colors.transparent,
-                      ),
-                      child: Text(
-                        '${days[index]}D',
-                        style: GoogleFonts.sourceSansPro(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 14,
-                          color: selectedIndex == index
-                              ? AppAssets().colorBlack
-                              : AppAssets().colorGrey,
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),
+              bottomTitles: bottomTitlesLineChart(),
             ),
             gridData: FlGridData(show: false),
           ),
         ),
+      ),
+    );
+  }
+
+  LineChartBarData dataLineChart() {
+    return LineChartBarData(
+      spots: spotsList.sublist(
+        widget.listPricesCrypto.listPrices.length - days[selectedIndex],
+      ),
+      isCurved: false,
+      barWidth: 3,
+      color: const Color.fromRGBO(224, 43, 87, 1),
+      dotData: FlDotData(show: false),
+    );
+  }
+
+  LineTouchTooltipData touchTooltipDataLineChart() {
+    return LineTouchTooltipData(
+      getTooltipItems: (touchedSpots) {
+        List<LineTooltipItem> prices = [];
+        for (LineBarSpot spot in touchedSpots) {
+          prices.add(
+            LineTooltipItem(
+              UtilBrasilFields.obterReal(spot.y),
+              const TextStyle(
+                color: Colors.pink,
+                fontWeight: FontWeight.w500,
+                fontSize: 12,
+              ),
+            ),
+          );
+        }
+        return prices;
+      },
+      tooltipBgColor: Colors.transparent,
+      showOnTopOfTheChartBoxArea: true,
+      fitInsideHorizontally: true,
+    );
+  }
+
+  AxisTitles bottomTitlesLineChart() {
+    return AxisTitles(
+      axisNameSize: 40,
+      axisNameWidget: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.only(top: 15),
+        itemCount: days.length,
+        itemBuilder: (context, index) {
+          return TextButton(
+            onPressed: () {
+              setState(() {
+                selectedIndex = index;
+              });
+            },
+            style: TextButton.styleFrom(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 6,
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(4),
+              ),
+              minimumSize: const Size(29, 22),
+              backgroundColor: selectedIndex == index
+                  ? const Color.fromRGBO(227, 228, 235, 1)
+                  : Colors.transparent,
+            ),
+            child: Text(
+              '${days[index]}D',
+              style: GoogleFonts.sourceSansPro(
+                fontWeight: FontWeight.w700,
+                fontSize: 14,
+                color: selectedIndex == index
+                    ? AppAssets().colorBlack
+                    : AppAssets().colorGrey,
+              ),
+            ),
+          );
+        },
       ),
     );
   }

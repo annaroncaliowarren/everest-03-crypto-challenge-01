@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../../screens/portfolio/models/portfolio_model.dart';
-import '../use_case/view_data/crypto_view_data.dart';
-
+import '../../screens/conversion/view/conversion_screen.dart';
 import '../../screens/details/view/details_screen.dart';
+import '../../screens/portfolio/models/portfolio_model.dart';
 import '../../screens/portfolio/view/portfolio_screen.dart';
 import '../../screens/transactions/view/transactions_screen.dart';
+import '../use_case/view_data/crypto_view_data.dart';
 
 class AppRoutes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -21,6 +21,15 @@ class AppRoutes {
             return DetailsScreen(
               crypto: arguments.crypto,
               portfolioData: arguments.portfolioData,
+            );
+          },
+        );
+      case ConversionScreen.conversionRoute:
+        return MaterialPageRoute(
+          builder: (_) {
+            final conversionArg = settings.arguments as PortfolioModel;
+            return ConversionScreen(
+              portfolioData: conversionArg,
             );
           },
         );
