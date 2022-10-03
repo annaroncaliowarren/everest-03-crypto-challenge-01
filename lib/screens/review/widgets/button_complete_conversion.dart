@@ -1,7 +1,6 @@
+import 'package:crypto_list/screens/confirmed_conversion/view/confirmed_conversion_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
-import '../review_screen.dart';
 
 class ButtonCompleteConversion extends ConsumerWidget {
   const ButtonCompleteConversion({Key? key}) : super(key: key);
@@ -36,7 +35,7 @@ class ButtonCompleteConversion extends ConsumerWidget {
 Route _createRouteAnimation() {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) =>
-        const ReviewScreen(),
+        const ConfirmedConversionScreen(),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       const begin = Offset(0.0, 1.0);
       const end = Offset.zero;

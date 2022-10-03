@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../review/review_screen.dart';
+import '../../review/view/review_screen.dart';
 import '../provider/conversion_provider.dart';
 
 class FloatingButtonConversionScreen extends ConsumerWidget {
