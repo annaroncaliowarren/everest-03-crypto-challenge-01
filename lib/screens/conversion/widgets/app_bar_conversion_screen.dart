@@ -32,10 +32,10 @@ class AppBarConversionScreen extends ConsumerWidget
           color: Colors.black,
         ),
         onPressed: () {
-          Navigator.of(context).pop();
           cryptoValueController.state.clear();
           conversionReal.state = Decimal.parse('0');
           estimatedTotal.state = 0;
+          Navigator.of(context).pop();
         },
       ),
     );
