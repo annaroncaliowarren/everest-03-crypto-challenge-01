@@ -1,3 +1,4 @@
+import 'package:crypto_list/shared/utils/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -14,33 +15,16 @@ class FloatingButtonConversionScreen extends ConsumerWidget {
     final secondSelectedCrypto = ref.watch(secondSelectedCryptoProvider.state);
 
     showAlertDialog(BuildContext context) {
-      Widget cancelButton = TextButton(
-        child: const Text(
-          'Cancelar',
+      Widget goBackButton = TextButton(
+        child: Text(
+          'Voltar',
           style: TextStyle(
-            color: Colors.grey,
+            color: AppAssets().colorPink,
             fontSize: 17,
           ),
         ),
         onPressed: () {
           Navigator.of(context).pop();
-        },
-      );
-
-      Widget continueButton = TextButton(
-        child: const Text(
-          'Continuar',
-          style: TextStyle(
-            color: Color.fromRGBO(224, 43, 87, 1),
-            fontSize: 17,
-          ),
-        ),
-        onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => const ReviewScreen(),
-            ),
-          );
         },
       );
 
@@ -52,14 +36,13 @@ class FloatingButtonConversionScreen extends ConsumerWidget {
           ),
         ),
         content: const Text(
-          'Você está tentando converter a mesma moeda. Quer continuar mesmo assim?',
+          'Você está tentando converter a mesma moeda.',
           style: TextStyle(
             fontSize: 18,
           ),
         ),
         actions: [
-          cancelButton,
-          continueButton,
+          goBackButton,
         ],
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
