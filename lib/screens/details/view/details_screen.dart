@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../shared/use_case/view_data/crypto_view_data.dart';
+import '../../../shared/widgets/app_bar_default_app.dart';
 import '../../portfolio/models/portfolio_model.dart';
-import '../widgets/app_bar_details_screen.dart';
 import '../widgets/body_details_screen.dart';
 
 class DetailsScreen extends StatelessWidget {
@@ -20,7 +20,9 @@ class DetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarDetailsScreen(),
+      appBar: const AppBarDefaultApp(
+        title: 'Detalhes',
+      ),
       body: SingleChildScrollView(
         child: BodyDetailsScreen(
           crypto: crypto,
