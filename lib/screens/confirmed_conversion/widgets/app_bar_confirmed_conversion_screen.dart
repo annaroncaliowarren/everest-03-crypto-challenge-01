@@ -3,6 +3,7 @@ import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../shared/providers/index_provider.dart';
 import '../../conversion/provider/conversion_provider.dart';
 
 class AppBarConfirmedConversionScreen extends ConsumerWidget
@@ -28,6 +29,7 @@ class AppBarConfirmedConversionScreen extends ConsumerWidget
           cryptoValueController.state.clear();
           conversionReal.state = Decimal.parse('0');
           estimatedTotal.state = 0;
+          ref.read(selectedIndexBottomNavigationBarProvider.state).state = 1;
           Navigator.pushNamed(
             context,
             TransactionsScreen.transactionsRoute,

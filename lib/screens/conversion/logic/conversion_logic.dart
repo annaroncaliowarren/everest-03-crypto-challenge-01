@@ -1,7 +1,7 @@
-import 'package:crypto_list/screens/portfolio/models/portfolio_model.dart';
 import 'package:decimal/decimal.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../portfolio/models/portfolio_model.dart';
 import '../provider/conversion_provider.dart';
 
 Decimal getValueConversionReal(WidgetRef ref) {

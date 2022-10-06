@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../portfolio/models/portfolio_model.dart';
-import '../logic/conversion_logic.dart';
 import '../provider/conversion_provider.dart';
 import 'dropdown_button_right_crypto_list_conversion.dart';
 import 'dropdown_button_left_portfolio_list_conversion.dart';
@@ -21,23 +20,7 @@ class BodyConversionScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final firstSelectedCrypto = ref.watch(firstSelectedCryptoProvider.state);
-    final secondSelectedCrypto = ref.watch(secondSelectedCryptoProvider.state);
     final conversionReal = ref.watch(conversionRealProvider.state);
-    final cryptoValueController =
-        ref.watch(textFieldCryptoControllerProvider.state);
-    final estimatedTotal = ref.watch(estimatedTotalProvider.state);
-
-    final balanceAvailable = portfolioData.listCoins
-        .firstWhere(
-          (crypto) =>
-              crypto.cryptoShortName ==
-              firstSelectedCrypto.state.symbol.toUpperCase(),
-        )
-        .amountCurrency
-        .toStringAsFixed(8);
-
-    
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -77,12 +60,7 @@ class BodyConversionScreen extends ConsumerWidget {
             ),
           ),
           TextFormFieldConversionInput(
-            balanceAvailable: balanceAvailable,
-            onChangedTextField: (value) {
-              getValueConversionReal(ref);
-              getEstimatedTotal(ref);
-              floatingBtnIsAble(ref, portfolioData);
-            },
+            portfolioData: portfolioData,
           ),
           const SizedBox(height: 8),
           Text(

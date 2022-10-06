@@ -1,5 +1,4 @@
 import 'package:brasil_fields/brasil_fields.dart';
-import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -9,9 +8,7 @@ import '../../../shared/utils/app_assets.dart';
 import '../../../shared/utils/app_routes.dart';
 import '../../details/provider/details_provider.dart';
 import '../../details/view/details_screen.dart';
-import '../../transactions/model/transaction_model.dart';
-import '../../transactions/provider/transactions_provider.dart';
-import '../models/coin_in_portfolio_model.dart';
+import '../logic/portfolio_logic.dart';
 import '../providers/portfolio_providers.dart';
 
 class ListTilePortfolioScreen extends ConsumerWidget {
@@ -26,46 +23,6 @@ class ListTilePortfolioScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     bool isVisible = ref.watch(isVisibleProvider);
     final portfolioData = ref.watch(portfolioModelProvider);
-    final listTransactions = ref.watch(listTransactionsProvider.state);
-    Decimal customerCurrencyValue = portfolioData.listCoins
-        .firstWhere((c) => c.cryptoShortName == crypto.symbol.toUpperCase())
-        .currencyCustomerValue;
-
-    CoinInPortfolioModel getAmountCurrency() {
-      for (CoinInPortfolioModel coin in portfolioData.listCoins) {
-        if (coin.cryptoShortName == crypto.symbol.toUpperCase()) {
-          coin.amountCurrency = (coin.currencyCustomerValue.toDouble() /
-              double.parse(
-                crypto.currentPrice.toString(),
-              ));
-        }
-      }
-      return portfolioData.listCoins.firstWhere(
-        (coin) => coin.cryptoShortName == crypto.symbol.toUpperCase(),
-      );
-    }
-
-    double calculateTransactions(CoinInPortfolioModel coin) {
-      for (TransactionModel transaction in listTransactions.state) {
-        if (transaction.fromCrypto.symbol.toUpperCase() ==
-            coin.cryptoShortName) {
-          coin.amountCurrency =
-              coin.amountCurrency - transaction.fromValueCrypto.toDouble();
-        } else if (transaction.toCrypto.symbol.toUpperCase() ==
-            coin.cryptoShortName) {
-          coin.amountCurrency =
-              coin.amountCurrency + transaction.toValueCrypto.toDouble();
-        }
-      }
-      return coin.amountCurrency;
-    }
-
-    Decimal updateCurrentCurrencyValue(double amountUpdated) {
-      customerCurrencyValue =
-          Decimal.parse(amountUpdated.toString()) * crypto.currentPrice;
-
-      return customerCurrencyValue;
-    }
 
     return ListTile(
       onTap: () {
@@ -120,9 +77,12 @@ class ListTilePortfolioScreen extends ConsumerWidget {
                 isVisible
                     ? UtilBrasilFields.obterReal(
                         updateCurrentCurrencyValue(
+                          ref,
                           calculateTransactions(
-                            getAmountCurrency(),
+                            ref,
+                            getAmountCurrency(ref, crypto),
                           ),
+                          crypto,
                         ).toDouble(),
                       )
                     : 'R\$ •••••',
@@ -135,7 +95,7 @@ class ListTilePortfolioScreen extends ConsumerWidget {
               const SizedBox(height: 4),
               Text(
                 isVisible
-                    ? '${calculateTransactions(getAmountCurrency()).toStringAsFixed(2)} ${crypto.symbol.toUpperCase()}'
+                    ? '${calculateTransactions(ref, getAmountCurrency(ref, crypto)).toStringAsFixed(2)} ${crypto.symbol.toUpperCase()}'
                     : '•••• ${crypto.symbol.toUpperCase()}',
                 style: TextStyle(
                   fontSize: 15,
