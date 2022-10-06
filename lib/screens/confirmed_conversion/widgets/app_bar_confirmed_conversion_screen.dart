@@ -1,9 +1,9 @@
+import 'package:crypto_list/screens/transactions/view/transactions_screen.dart';
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../conversion/provider/conversion_provider.dart';
-import '../../portfolio/view/portfolio_screen.dart';
 
 class AppBarConfirmedConversionScreen extends ConsumerWidget
     implements PreferredSizeWidget {
@@ -30,7 +30,7 @@ class AppBarConfirmedConversionScreen extends ConsumerWidget
           estimatedTotal.state = 0;
           Navigator.pushNamed(
             context,
-            PortfolioScreen.portfolioRoute,
+            TransactionsScreen.transactionsRoute,
           );
         },
       ),
