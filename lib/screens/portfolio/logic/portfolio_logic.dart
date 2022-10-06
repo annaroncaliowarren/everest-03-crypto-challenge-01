@@ -27,7 +27,7 @@ validateTransaction(WidgetRef ref, double amountCurrency) {
   final portfolioData = ref.watch(portfolioModelProvider);
 
   for (CoinInPortfolioModel coin in portfolioData.listCoins) {
-    if (amountCurrency == 0) {
+    if (amountCurrency <= 0) {
       portfolioData.listCoins.remove(coin);
       ref.read(portfolioModelProvider.state).state;
     }
@@ -36,18 +36,31 @@ validateTransaction(WidgetRef ref, double amountCurrency) {
 
 double calculateTransactions(WidgetRef ref, CoinInPortfolioModel coin) {
   final listTransactions = ref.watch(listTransactionsProvider.state);
+  final portfolioData = ref.watch(portfolioModelProvider);
 
   for (TransactionModel transaction in listTransactions.state) {
-    if (transaction.fromCrypto.symbol.toUpperCase() == coin.cryptoShortName) {
-      coin.amountCurrency =
-          coin.amountCurrency - transaction.fromValueCrypto.toDouble();
-      //validateTransaction(ref, coin.amountCurrency);
-    } else if (transaction.toCrypto.symbol.toUpperCase() ==
-        coin.cryptoShortName) {
-      coin.amountCurrency =
-          coin.amountCurrency + transaction.toValueCrypto.toDouble();
+    if (portfolioData.listCoins.any((coin) =>
+        coin.cryptoShortName == transaction.toCrypto.symbol.toUpperCase())) {
+      if (transaction.fromCrypto.symbol.toUpperCase() == coin.cryptoShortName) {
+        coin.amountCurrency =
+            coin.amountCurrency - transaction.fromValueCrypto.toDouble();
+        //validateTransaction(ref, coin.amountCurrency);
+      } else if (transaction.toCrypto.symbol.toUpperCase() ==
+          coin.cryptoShortName) {
+        coin.amountCurrency =
+            coin.amountCurrency + transaction.toValueCrypto.toDouble();
+      }
+    } else {
+      portfolioData.listCoins.add(
+        CoinInPortfolioModel(
+          cryptoShortName: transaction.toCrypto.symbol.toUpperCase(),
+          currencyCustomerValue: Decimal.parse('0'),
+          amountCurrency: transaction.toValueCrypto.toDouble(),
+        ),
+      );
     }
   }
+
   return coin.amountCurrency;
 }
 

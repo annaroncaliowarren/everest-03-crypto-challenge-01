@@ -8,7 +8,7 @@ import '../models/coin_in_portfolio_model.dart';
 import '../providers/portfolio_providers.dart';
 import 'list_tile_portfolio_screen.dart';
 
-class ListViewPortfolioScreen extends ConsumerWidget {
+class ListViewPortfolioScreen extends ConsumerStatefulWidget {
   final CryptoListViewData data;
 
   const ListViewPortfolioScreen({
@@ -17,7 +17,21 @@ class ListViewPortfolioScreen extends ConsumerWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ListViewPortfolioScreen> createState() =>
+      _ListViewPortfolioScreenState();
+}
+
+class _ListViewPortfolioScreenState
+    extends ConsumerState<ListViewPortfolioScreen> {
+
+  @override
+  void initState() {
+    ref.read(portfolioModelProvider.state).state;
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final cryptoData = ref.watch(getAllCryptoCoinsProvider);
     final portfolioData = ref.watch(portfolioModelProvider);
     List<CryptoViewData> listCrypto = [];
