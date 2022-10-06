@@ -1,33 +1,36 @@
+import 'package:crypto_list/screens/portfolio/models/coin_in_portfolio_model.dart';
+import 'package:crypto_list/screens/portfolio/providers/portfolio_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../shared/use_case/providers/get_all_crypto_coins_use_case_provider.dart';
 import '../../../shared/use_case/view_data/crypto_view_data.dart';
+import '../logic/conversion_logic.dart';
+import '../provider/conversion_provider.dart';
 
-class DropdownButtonCryptoListConversion extends ConsumerWidget {
-  final CryptoViewData cryptoProvider;
-  final void Function(CryptoViewData?) onChangedDropdown;
-
-  const DropdownButtonCryptoListConversion({
-    Key? key,
-    required this.cryptoProvider,
-    required this.onChangedDropdown,
-  }) : super(key: key);
+class DropdownButtonLeftPortfolioListConversion extends ConsumerWidget {
+  const DropdownButtonLeftPortfolioListConversion({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final firstSelectedCrypto = ref.watch(firstSelectedCryptoProvider.state);
+    final portfolioData = ref.watch(portfolioModelProvider);
     final cryptoData = ref.watch(getAllCryptoCoinsProvider);
 
     List<CryptoViewData> listCoins = [];
 
-    for (CryptoViewData crypto in cryptoData.value!.listCryptoViewData) {
-      listCoins.add(crypto);
+    for (CoinInPortfolioModel coin in portfolioData.listCoins) {
+      for (CryptoViewData crypto in cryptoData.value!.listCryptoViewData) {
+        if (coin.cryptoShortName == crypto.symbol.toUpperCase()) {
+          listCoins.add(crypto);
+        }
+      }
     }
 
     return SizedBox(
       height: 32,
-      width: 92,
+      width: 99,
       child: DropdownButtonFormField(
         items: listCoins.map<DropdownMenuItem<CryptoViewData>>(
           (CryptoViewData coinValue) {
@@ -46,8 +49,12 @@ class DropdownButtonCryptoListConversion extends ConsumerWidget {
             );
           },
         ).toList(),
-        onChanged: onChangedDropdown,
-        value: cryptoProvider,
+        onChanged: (CryptoViewData? newSelectedCoin) {
+          firstSelectedCrypto.state = newSelectedCoin!;
+          getValueConversionReal(ref);
+          getEstimatedTotal(ref);
+        },
+        value: firstSelectedCrypto.state,
         style: GoogleFonts.sourceSansPro(
           fontSize: 14,
           color: Colors.black,
