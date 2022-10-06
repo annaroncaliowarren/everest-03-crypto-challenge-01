@@ -16,7 +16,7 @@ class ListTileTransactionReceipt extends StatelessWidget {
       title: Text(
         title,
         style: const TextStyle(
-          fontWeight: FontWeight.w500,
+          fontWeight: FontWeight.w600,
           fontSize: 19,
         ),
       ),

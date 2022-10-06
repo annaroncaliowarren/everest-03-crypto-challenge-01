@@ -1,5 +1,5 @@
 import 'package:brasil_fields/brasil_fields.dart';
-import 'package:crypto_list/shared/utils/app_assets.dart';
+import '../../../shared/utils/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';

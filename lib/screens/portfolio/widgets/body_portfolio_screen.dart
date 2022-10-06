@@ -4,7 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../shared/use_case/providers/get_all_crypto_coins_use_case_provider.dart';
 import '../../../shared/widgets/default_failure_screen.dart';
 import 'container_top_portfolio_screen.dart';
-import 'list_tile_portfolio_screen.dart';
+import 'list_view_portfolio_screen.dart';
 
 class BodyPortfolioScreen extends ConsumerWidget {
   const BodyPortfolioScreen({Key? key}) : super(key: key);
@@ -18,17 +18,8 @@ class BodyPortfolioScreen extends ConsumerWidget {
         const ContainerTopPortfolioScreen(),
         Expanded(
           child: cryptoCoins.when(
-            data: (data) => ListView.builder(
-              physics: const BouncingScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: data.listCryptoViewData.length,
-              itemBuilder: (context, index) {
-                final crypto = data.listCryptoViewData[index];
-
-                return ListTilePortfolioScreen(
-                  crypto: crypto,
-                );
-              },
+            data: (data) => ListViewPortfolioScreen(
+              data: data,
             ),
             error: (error, stackTrace) => DefaultFailureScreen(
               onPressed: () {
@@ -47,3 +38,5 @@ class BodyPortfolioScreen extends ConsumerWidget {
     );
   }
 }
+
+

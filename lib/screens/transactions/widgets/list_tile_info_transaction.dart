@@ -1,4 +1,5 @@
 import 'package:brasil_fields/brasil_fields.dart';
+import '../../../shared/utils/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
@@ -27,17 +28,17 @@ class ListTileInfoTransaction extends StatelessWidget {
         padding: const EdgeInsets.only(bottom: 5),
         child: Text(
           '${transaction.fromValueCrypto} ${transaction.fromCrypto.symbol.toUpperCase()}',
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 19,
-            color: Color.fromRGBO(117, 118, 128, 1),
+            color: AppAssets().colorGrey,
           ),
         ),
       ),
       subtitle: Text(
         DateFormat('dd/MM/yyyy').format(transaction.dateConversion),
-        style: const TextStyle(
+        style: TextStyle(
           fontSize: 15,
-          color: Color.fromRGBO(117, 118, 128, 1),
+          color: AppAssets().colorGrey,
         ),
       ),
       trailing: Column(
@@ -46,9 +47,9 @@ class ListTileInfoTransaction extends StatelessWidget {
         children: [
           Text(
             '${transaction.toValueCrypto.toStringAsFixed(4)} ${transaction.toCrypto.symbol.toUpperCase()}',
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 19,
-              color: Colors.black,
+              color: AppAssets().colorBlack,
             ),
           ),
           const SizedBox(height: 5),
@@ -56,9 +57,9 @@ class ListTileInfoTransaction extends StatelessWidget {
             UtilBrasilFields.obterReal(
               transaction.conversionReal.toDouble(),
             ),
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 15,
-              color: Color.fromRGBO(117, 118, 128, 1),
+              color: AppAssets().colorGrey,
             ),
           ),
         ],
