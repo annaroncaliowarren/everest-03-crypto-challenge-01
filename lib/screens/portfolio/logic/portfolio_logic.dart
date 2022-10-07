@@ -59,7 +59,6 @@ double calculateTransactions(WidgetRef ref, CoinInPortfolioModel coin) {
       );
     }
   }
-
   return coin.amountCurrency;
 }
 

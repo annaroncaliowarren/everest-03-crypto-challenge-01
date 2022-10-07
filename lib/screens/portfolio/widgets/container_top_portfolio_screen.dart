@@ -11,11 +11,11 @@ class ContainerTopPortfolioScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(
-        top: 24,
-        bottom: 25,
-        right: 18,
-        left: 16,
+      width: MediaQuery.of(context).size.width,
+      color: Colors.white,
+      padding: const EdgeInsets.symmetric(
+        vertical: 24,
+        horizontal: 17,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
