@@ -9,8 +9,8 @@ class GetCryptoPricesListUseCase {
     required this.repository,
   });
 
-  Future<CryptoPricesListViewData> execute(String cryptoFullName) async {
-    final response = await repository.getCryptoPricesList(cryptoFullName);
+  Future<CryptoPricesListViewData> execute(String cryptoId) async {
+    final response = await repository.getCryptoPricesList(cryptoId);
     return response.toViewData();
   }
 }

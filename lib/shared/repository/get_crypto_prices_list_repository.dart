@@ -11,8 +11,9 @@ class GetCryptoPricesListRepository {
   });
 
   Future<CryptoPricesListResponse> getCryptoPricesList(
-      String cryptoFullName) async {
-    final response = await cryptoEndpoint.getCryptoPricesList(cryptoFullName);
+    String cryptoId,
+  ) async {
+    final response = await cryptoEndpoint.getCryptoPricesList(cryptoId);
 
     List<Decimal> listPricesCrypto = response.data['prices']
         .map<Decimal>(

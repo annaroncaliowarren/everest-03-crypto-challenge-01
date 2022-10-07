@@ -44,7 +44,6 @@ double calculateTransactions(WidgetRef ref, CoinInPortfolioModel coin) {
       if (transaction.fromCrypto.symbol.toUpperCase() == coin.cryptoShortName) {
         coin.amountCurrency =
             coin.amountCurrency - transaction.fromValueCrypto.toDouble();
-        //validateTransaction(ref, coin.amountCurrency);
       } else if (transaction.toCrypto.symbol.toUpperCase() ==
           coin.cryptoShortName) {
         coin.amountCurrency =
