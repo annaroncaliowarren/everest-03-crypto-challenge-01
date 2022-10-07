@@ -31,10 +31,11 @@ class AppBarConfirmedConversionScreen extends ConsumerWidget
           conversionReal.state = Decimal.parse('0');
           estimatedTotal.state = 0;
           ref.read(selectedIndexBottomNavigationBarProvider.state).state = 1;
-
-          Navigator.pushNamed(
+          
+          Navigator.pushNamedAndRemoveUntil(
             context,
             TransactionsScreen.transactionsRoute,
+            ModalRoute.withName(TransactionsScreen.transactionsRoute),
           );
         },
       ),

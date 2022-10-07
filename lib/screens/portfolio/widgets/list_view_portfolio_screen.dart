@@ -1,4 +1,3 @@
-import 'package:crypto_list/shared/use_case/providers/get_all_crypto_coins_use_case_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -18,12 +17,12 @@ class ListViewPortfolioScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final cryptoData = ref.watch(getAllCryptoCoinsProvider);
     final portfolioData = ref.watch(portfolioModelProvider);
+    
     List<CryptoViewData> listCrypto = [];
 
     for (CoinInPortfolioModel coin in portfolioData.listCoins) {
-      for (CryptoViewData crypto in cryptoData.value!.listCryptoViewData) {
+      for (CryptoViewData crypto in data.listCryptoViewData) {
         if (coin.cryptoShortName == crypto.symbol.toUpperCase()) {
           listCrypto.add(crypto);
         }

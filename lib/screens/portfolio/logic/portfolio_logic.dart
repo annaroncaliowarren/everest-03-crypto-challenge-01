@@ -23,17 +23,6 @@ CoinInPortfolioModel getAmountCurrency(WidgetRef ref, CryptoViewData crypto) {
   );
 }
 
-validateTransaction(WidgetRef ref, double amountCurrency) {
-  final portfolioData = ref.watch(portfolioModelProvider);
-
-  for (CoinInPortfolioModel coin in portfolioData.listCoins) {
-    if (amountCurrency <= 0) {
-      portfolioData.listCoins.remove(coin);
-      ref.read(portfolioModelProvider.state).state;
-    }
-  }
-}
-
 double calculateTransactions(WidgetRef ref, CoinInPortfolioModel coin) {
   final listTransactions = ref.watch(listTransactionsProvider.state);
   final portfolioData = ref.watch(portfolioModelProvider);
@@ -42,12 +31,10 @@ double calculateTransactions(WidgetRef ref, CoinInPortfolioModel coin) {
     if (portfolioData.listCoins.any((coin) =>
         coin.cryptoShortName == transaction.toCrypto.symbol.toUpperCase())) {
       if (transaction.fromCrypto.symbol.toUpperCase() == coin.cryptoShortName) {
-        coin.amountCurrency =
-            coin.amountCurrency - transaction.fromValueCrypto.toDouble();
+        coin.amountCurrency -= transaction.fromValueCrypto.toDouble();
       } else if (transaction.toCrypto.symbol.toUpperCase() ==
           coin.cryptoShortName) {
-        coin.amountCurrency =
-            coin.amountCurrency + transaction.toValueCrypto.toDouble();
+        coin.amountCurrency += transaction.toValueCrypto.toDouble();
       }
     } else {
       portfolioData.listCoins.add(
@@ -59,6 +46,7 @@ double calculateTransactions(WidgetRef ref, CoinInPortfolioModel coin) {
       );
     }
   }
+
   return coin.amountCurrency;
 }
 

@@ -1,21 +1,25 @@
-import 'package:crypto_list/screens/portfolio/models/coin_in_portfolio_model.dart';
-import 'package:crypto_list/screens/portfolio/providers/portfolio_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../shared/use_case/providers/get_all_crypto_coins_use_case_provider.dart';
 import '../../../shared/use_case/view_data/crypto_view_data.dart';
+import '../../portfolio/models/coin_in_portfolio_model.dart';
+import '../../portfolio/models/portfolio_model.dart';
 import '../logic/conversion_logic.dart';
 import '../provider/conversion_provider.dart';
 
 class DropdownButtonLeftPortfolioListConversion extends ConsumerWidget {
-  const DropdownButtonLeftPortfolioListConversion({Key? key}) : super(key: key);
+  const DropdownButtonLeftPortfolioListConversion({
+    Key? key,
+    required this.portfolioData,
+  }) : super(key: key);
+
+  final PortfolioModel portfolioData;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final firstSelectedCrypto = ref.watch(firstSelectedCryptoProvider.state);
-    final portfolioData = ref.watch(portfolioModelProvider);
     final cryptoData = ref.watch(getAllCryptoCoinsProvider);
 
     List<CryptoViewData> listCoins = [];

@@ -1,5 +1,5 @@
 import 'package:brasil_fields/brasil_fields.dart';
-import 'package:crypto_list/screens/portfolio/logic/portfolio_logic.dart';
+import '../../portfolio/logic/portfolio_logic.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 

@@ -1,9 +1,9 @@
 import 'package:brasil_fields/brasil_fields.dart';
-import '../../../shared/utils/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
+import '../../../shared/utils/app_assets.dart';
 import '../model/transaction_model.dart';
 import 'list_tile_transaction_receipt.dart';
 import 'row_subtitle_transaction_receipt.dart';

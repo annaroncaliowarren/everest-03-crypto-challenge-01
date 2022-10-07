@@ -48,14 +48,16 @@ class BodyConversionScreen extends ConsumerWidget {
             padding: const EdgeInsets.symmetric(vertical: 8),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                DropdownButtonLeftPortfolioListConversion(),
-                Icon(
+              children: [
+                DropdownButtonLeftPortfolioListConversion(
+                  portfolioData: portfolioData,
+                ),
+                const Icon(
                   CupertinoIcons.arrow_right_arrow_left,
                   color: Color.fromRGBO(224, 43, 87, 1),
                   size: 20,
                 ),
-                DropdownButtonRightCryptoListConversion(),
+                const DropdownButtonRightCryptoListConversion(),
               ],
             ),
           ),
