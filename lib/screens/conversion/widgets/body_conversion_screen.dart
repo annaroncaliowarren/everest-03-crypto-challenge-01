@@ -1,13 +1,12 @@
 import 'package:brasil_fields/brasil_fields.dart';
-import 'package:decimal/decimal.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../shared/use_case/view_data/crypto_view_data.dart';
 import '../../portfolio/models/portfolio_model.dart';
 import '../provider/conversion_provider.dart';
-import 'dropdown_button_crypto_list_conversion.dart';
+import 'dropdown_button_right_crypto_list_conversion.dart';
+import 'dropdown_button_left_portfolio_list_conversion.dart';
 import 'row_balance_available.dart';
 import 'text_form_field_conversion_input.dart';
 
@@ -21,63 +20,7 @@ class BodyConversionScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final firstSelectedCrypto = ref.watch(firstSelectedCryptoProvider.state);
-    final secondSelectedCrypto = ref.watch(secondSelectedCryptoProvider.state);
     final conversionReal = ref.watch(conversionRealProvider.state);
-    final cryptoValueController =
-        ref.watch(textFieldCryptoControllerProvider.state);
-    final estimatedTotal = ref.watch(estimatedTotalProvider.state);
-
-    final balanceAvailable = portfolioData.listCoins
-        .firstWhere(
-          (crypto) =>
-              crypto.cryptoShortName ==
-              firstSelectedCrypto.state.symbol.toUpperCase(),
-        )
-        .amountCurrency
-        .toStringAsFixed(8);
-
-    Decimal getValueConversionReal() {
-      if (cryptoValueController.state.text != '') {
-        conversionReal.state = Decimal.parse(
-                cryptoValueController.state.text.replaceAll(',', '.')) *
-            firstSelectedCrypto.state.currentPrice;
-      } else {
-        conversionReal.state = Decimal.parse('0');
-      }
-      return conversionReal.state;
-    }
-
-    double getEstimatedTotal() {
-      estimatedTotal.state = conversionReal.state.toDouble() /
-          secondSelectedCrypto.state.currentPrice.toDouble();
-      return estimatedTotal.state;
-    }
-
-    bool validateCryptoValueController() {
-      if (cryptoValueController.state.text != '') {
-        if (double.parse(
-                cryptoValueController.state.text.replaceAll(',', '.')) <=
-            double.parse(balanceAvailable)) {
-          return true;
-        } else {
-          return false;
-        }
-      }
-      return true;
-    }
-
-    floatingBtnIsAble() {
-      if (cryptoValueController.state.text != '') {
-        if (validateCryptoValueController()) {
-          ref.read(isAbleFloatingBtnProvider.state).state = true;
-        } else {
-          ref.read(isAbleFloatingBtnProvider.state).state = false;
-        }
-      } else {
-        ref.read(isAbleFloatingBtnProvider.state).state = false;
-      }
-    }
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -106,37 +49,20 @@ class BodyConversionScreen extends ConsumerWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                DropdownButtonCryptoListConversion(
-                  cryptoProvider: firstSelectedCrypto.state,
-                  onChangedDropdown: (CryptoViewData? newSelectedCoin) {
-                    firstSelectedCrypto.state = newSelectedCoin!;
-                    getValueConversionReal();
-                    getEstimatedTotal();
-                  },
+                DropdownButtonLeftPortfolioListConversion(
+                  portfolioData: portfolioData,
                 ),
                 const Icon(
                   CupertinoIcons.arrow_right_arrow_left,
                   color: Color.fromRGBO(224, 43, 87, 1),
                   size: 20,
                 ),
-                DropdownButtonCryptoListConversion(
-                  cryptoProvider: secondSelectedCrypto.state,
-                  onChangedDropdown: (CryptoViewData? newSelectedCoin) {
-                    secondSelectedCrypto.state = newSelectedCoin!;
-                    getValueConversionReal();
-                    getEstimatedTotal();
-                  },
-                ),
+                const DropdownButtonRightCryptoListConversion(),
               ],
             ),
           ),
           TextFormFieldConversionInput(
-            balanceAvailable: balanceAvailable,
-            onChangedTextField: (value) {
-              getValueConversionReal();
-              getEstimatedTotal();
-              floatingBtnIsAble();
-            },
+            portfolioData: portfolioData,
           ),
           const SizedBox(height: 8),
           Text(

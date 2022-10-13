@@ -16,15 +16,15 @@ final firstSelectedCryptoProvider = StateProvider<CryptoViewData>(
   ),
 );
 
-final secondSelectedCryptoProvider = StateProvider<CryptoViewData>(
-  (ref) {
-    return ref.read(getAllCryptoCoinsProvider).value!.listCryptoViewData.first;
-  }
-);
+final secondSelectedCryptoProvider = StateProvider<CryptoViewData>((ref) {
+  return ref.read(getAllCryptoCoinsProvider).value!.listCryptoViewData.first;
+});
 
-final textFieldCryptoControllerProvider = StateProvider<TextEditingController>((ref) => TextEditingController());
+final textFieldCryptoControllerProvider =
+    StateProvider<TextEditingController>((ref) => TextEditingController());
 
-final conversionRealProvider = StateProvider<Decimal>((ref) => Decimal.parse('0'));
+final conversionRealProvider =
+    StateProvider<Decimal>((ref) => Decimal.parse('0'));
 
 final estimatedTotalProvider = StateProvider<double>((ref) => 0);
 

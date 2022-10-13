@@ -1,29 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-import '../../../shared/utils/app_assets.dart';
+import 'list_view_transactions.dart';
 
 class BodyTransactionsScreen extends StatelessWidget {
   const BodyTransactionsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(
-            AppAssets().imageWorkInProgress,
-            scale: 3,
-          ),
-          const SizedBox(height: 20),
-          Text(
-            'Em breve!',
-            style: GoogleFonts.montserrat(
-              fontWeight: FontWeight.w700,
-              fontSize: 45,
-              color: AppAssets().colorPink,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: const [
+          Padding(
+            padding: EdgeInsets.only(
+              top: 32,
+              bottom: 24,
             ),
+            child: Text(
+              'Movimentações',
+              style: TextStyle(
+                fontWeight: FontWeight.w700,
+                fontSize: 32,
+              ),
+            ),
+          ),
+          Expanded(
+            child: ListViewTransactions(),
           ),
         ],
       ),

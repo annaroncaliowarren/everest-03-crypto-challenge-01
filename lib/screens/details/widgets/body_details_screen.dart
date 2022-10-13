@@ -24,9 +24,7 @@ class BodyDetailsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final listCryptoPrices = ref.watch(
-      getCryptoPricesListProvider(
-        crypto.name.toLowerCase(),
-      ),
+      getCryptoPricesListProvider(crypto.id),
     );
 
     return Padding(
@@ -50,7 +48,7 @@ class BodyDetailsScreen extends ConsumerWidget {
               child: InkWell(
                 onTap: () => ref.refresh(
                   getCryptoPricesListProvider(
-                    crypto.name.toLowerCase(),
+                    crypto.id,
                   ),
                 ),
                 child: CircleAvatar(

@@ -14,7 +14,7 @@ final getCryptoPricesListUseCaseProvider = Provider<GetCryptoPricesListUseCase>(
 
 final getCryptoPricesListProvider =
     FutureProvider.family<CryptoPricesListViewData, String>(
-  (ref, cryptoFullName) async {
-    return ref.read(getCryptoPricesListUseCaseProvider).execute(cryptoFullName);
+  (ref, cryptoId) async {
+    return ref.read(getCryptoPricesListUseCaseProvider).execute(cryptoId);
   },
 );

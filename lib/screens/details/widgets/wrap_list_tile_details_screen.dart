@@ -1,4 +1,5 @@
 import 'package:brasil_fields/brasil_fields.dart';
+import '../../portfolio/logic/portfolio_logic.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -22,7 +23,7 @@ class WrapListTileDetailsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentPrice = ref.watch(priceProvider);
-    
+
     CoinInPortfolioModel? coinInPortfolio;
 
     CoinInPortfolioModel getCoinInPortfolioData() {
@@ -64,7 +65,11 @@ class WrapListTileDetailsScreen extends ConsumerWidget {
         ListTileInfoDefaultApp(
           detailTitle: 'Valor',
           detailTrailing: UtilBrasilFields.obterReal(
-            getCoinInPortfolioData().currencyCustomerValue.toDouble(),
+            updateCurrentCurrencyValue(
+              ref,
+              getCoinInPortfolioData().amountCurrency,
+              crypto,
+            ).toDouble(),
           ),
           trailingColor: AppAssets().colorBlack,
           trailingFontWeight: FontWeight.normal,

@@ -2,36 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../portfolio/models/portfolio_model.dart';
+import '../logic/conversion_logic.dart';
 import '../provider/conversion_provider.dart';
 
 class TextFormFieldConversionInput extends ConsumerWidget {
-  final void Function(String) onChangedTextField;
-  final String balanceAvailable;
+  final PortfolioModel portfolioData;
 
   const TextFormFieldConversionInput({
     Key? key,
-    required this.onChangedTextField,
-    required this.balanceAvailable,
+    required this.portfolioData,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final firstSelectedCrypto = ref.watch(firstSelectedCryptoProvider.state);
-    final cryptoValueController =
-        ref.watch(textFieldCryptoControllerProvider.state);
-
-    bool validateCryptoValueController() {
-      if (cryptoValueController.state.text != '') {
-        if (double.parse(
-                cryptoValueController.state.text.replaceAll(',', '.')) >
-            double.parse(balanceAvailable)) {
-          return false;
-        } else {
-          return true;
-        }
-      }
-      return true;
-    }
+    final cryptoValueController = ref.watch(
+      textFieldCryptoControllerProvider.state,
+    );
 
     return TextFormField(
       controller: cryptoValueController.state,
@@ -46,10 +34,15 @@ class TextFormFieldConversionInput extends ConsumerWidget {
           RegExp(r'^(\d+)?,?\d{0,10}'),
         ),
       ],
-      onChanged: onChangedTextField,
+      onChanged: (value) {
+        getValueConversionReal(ref);
+        getEstimatedTotal(ref);
+        floatingBtnIsAble(ref, portfolioData);
+      },
       decoration: InputDecoration(
-        errorText:
-            validateCryptoValueController() ? null : 'Saldo Insuficiente',
+        errorText: validateCryptoValueController(ref, portfolioData)
+            ? null
+            : 'Saldo Insuficiente',
         errorStyle: const TextStyle(
           fontSize: 15,
         ),

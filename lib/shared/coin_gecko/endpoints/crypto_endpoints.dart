@@ -10,14 +10,13 @@ class CryptoEndpoints {
       '/coins/markets',
       queryParameters: {
         'vs_currency': 'brl',
-        'ids': 'bitcoin,ethereum,litecoin,dogecoin,cardano,tether',
       },
     );
   }
 
-  Future<Response> getCryptoPricesList(String cryptoFullName) async {
+  Future<Response> getCryptoPricesList(String cryptoId) async {
     return _dio.get(
-      '/coins/${cryptoFullName.toLowerCase()}/market_chart',
+      '/coins/$cryptoId/market_chart',
       queryParameters: {
         'vs_currency': 'brl',
         'days': '89',

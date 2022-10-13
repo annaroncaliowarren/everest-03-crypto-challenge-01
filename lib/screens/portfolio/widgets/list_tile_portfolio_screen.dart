@@ -8,7 +8,7 @@ import '../../../shared/utils/app_assets.dart';
 import '../../../shared/utils/app_routes.dart';
 import '../../details/provider/details_provider.dart';
 import '../../details/view/details_screen.dart';
-import '../models/coin_in_portfolio_model.dart';
+import '../logic/portfolio_logic.dart';
 import '../providers/portfolio_providers.dart';
 
 class ListTilePortfolioScreen extends ConsumerWidget {
@@ -23,24 +23,6 @@ class ListTilePortfolioScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     bool isVisible = ref.watch(isVisibleProvider);
     final portfolioData = ref.watch(portfolioModelProvider);
-    final customerCurrencyValue = portfolioData.listCoins
-        .firstWhere((coin) => coin.cryptoShortName == crypto.symbol.toUpperCase())
-        .currencyCustomerValue
-        .toDouble();
-
-    CoinInPortfolioModel getAmountCurrency() {
-      for (CoinInPortfolioModel coin in portfolioData.listCoins) {
-        if (coin.cryptoShortName == crypto.symbol.toUpperCase()) {
-          coin.amountCurrency = (coin.currencyCustomerValue.toDouble() /
-              double.parse(
-                crypto.currentPrice.toString(),
-              ));
-        }
-      }
-      return portfolioData.listCoins.firstWhere(
-        (coin) => coin.cryptoShortName == crypto.symbol.toUpperCase(),
-      );
-    }
 
     return ListTile(
       onTap: () {
@@ -93,7 +75,16 @@ class ListTilePortfolioScreen extends ConsumerWidget {
             children: [
               Text(
                 isVisible
-                    ? UtilBrasilFields.obterReal(customerCurrencyValue)
+                    ? UtilBrasilFields.obterReal(
+                        updateCurrentCurrencyValue(
+                          ref,
+                          calculateTransactions(
+                            ref,
+                            getAmountCurrency(ref, crypto),
+                          ),
+                          crypto,
+                        ).toDouble(),
+                      )
                     : 'R\$ •••••',
                 style: TextStyle(
                   fontSize: 19,
@@ -104,7 +95,7 @@ class ListTilePortfolioScreen extends ConsumerWidget {
               const SizedBox(height: 4),
               Text(
                 isVisible
-                    ? '${getAmountCurrency().amountCurrency.toStringAsFixed(2)} ${crypto.symbol.toUpperCase()}'
+                    ? '${calculateTransactions(ref, getAmountCurrency(ref, crypto)).toStringAsFixed(2)} ${crypto.symbol.toUpperCase()}'
                     : '•••• ${crypto.symbol.toUpperCase()}',
                 style: TextStyle(
                   fontSize: 15,

@@ -11,6 +11,7 @@ class AppAssets {
   final imageExclamation = 'assets/images/exclamation.png';
   final imageRepeatArrow = 'assets/images/repeat_arrow.png';
   final imageCheck = 'assets/images/check.png';
+  final imageWarren = 'assets/images/warren.png';
 
   Color colorPink = const Color.fromRGBO(224, 43, 87, 1);
   Color colorGrey = const Color.fromRGBO(117, 118, 128, 1);
